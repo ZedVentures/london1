@@ -265,7 +265,7 @@ function App() {
       </header>
 
       {/* Hero Section with Video Background */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pb-20">
         {/* Video Background */}
         <video
           autoPlay
@@ -277,12 +277,12 @@ function App() {
           <source src="https://xfxgavqdippgfoawsavh.supabase.co/storage/v1/object/public/Video%20BAckground/Untitled%20design%20(1).mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        
+
         {/* Dark Overlay */}
        <div className="absolute inset-0 bg-black/40 z-10"></div>
 
-<div className="relative z-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-32 md:pt-24">
-  <div className="bg-white/95 backdrop-blur-md rounded-3xl p-8 lg:p-12 shadow-2xl transform hover:scale-105 transition-all duration-500">
+<div className="relative z-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-32 md:pt-24 pb-12">
+  <div className="bg-white/95 backdrop-blur-md rounded-3xl p-8 lg:p-12 shadow-2xl transform hover:scale-105 transition-all duration-500 mb-8">
     <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-blue-600 to-green-600 mb-4 sm:mb-6 lg:mb-8 px-1 sm:px-2">
       Growth starts with one question:
       <span className="block text-purple-800 mt-2">What is possible?</span>
