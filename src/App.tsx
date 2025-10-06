@@ -283,8 +283,8 @@ function App() {
 
 <div className="relative z-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center pb-12">
   <div className="bg-white/95 backdrop-blur-md rounded-3xl p-8 lg:p-12 shadow-2xl transform hover:scale-105 transition-all duration-500 mb-8">
-    <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-blue-600 to-green-600 mb-4 sm:mb-6 lg:mb-8 px-1 sm:px-2">
-      Growth starts with one question:
+    <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black mb-4 sm:mb-6 lg:mb-8 px-1 sm:px-2">
+      <span className="text-black">Growth starts with one question:</span>
       <span className="block text-purple-800 mt-2">What is possible?</span>
     </h1>
 
