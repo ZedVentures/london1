@@ -299,12 +299,12 @@ function App() {
       Discover how our proven VIPI framework can unlock your business potential and transform your vision into measurable results.
     </p>
 
-    <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-6 justify-center items-center">
-      
+    <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-6 justify-center items-stretch w-full max-w-full px-2">
+
       {/* Start Conversation */}
       <a
         href="#contact"
-        className="btn-primary"
+        className="btn-primary flex-1 sm:flex-initial"
       >
         <span>Start a Conversation</span>
         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -315,7 +315,7 @@ function App() {
         onClick={() => {
           document.getElementById('vipi-programme')?.scrollIntoView({ behavior: 'smooth' });
         }}
-        className="btn-secondary"
+        className="btn-secondary flex-1 sm:flex-initial"
       >
         <span>Explore the VIPI Programme</span>
         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -324,7 +324,7 @@ function App() {
       {/* Calculator */}
       <button
         onClick={() => setIsCalculatorOpen(true)}
-        className="btn-primary"
+        className="btn-primary flex-1 sm:flex-initial"
       >
         <span>Try Our Valuation Calculator</span>
         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />

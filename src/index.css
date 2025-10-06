@@ -4,11 +4,12 @@
 @tailwind utilities;
 @layer components {
   .btn-base {
-    @apply w-full sm:w-auto px-4 sm:px-6 lg:px-8 xl:px-10 py-3 sm:py-4 lg:py-5
+    @apply w-full sm:w-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4 lg:py-5
            rounded-lg sm:rounded-xl font-black text-base sm:text-lg lg:text-xl
            transition-all duration-500 hover:scale-105 hover:shadow-2xl
-           min-h-[48px] sm:min-h-[56px] min-w-[280px] sm:min-w-[320px]
-           flex items-center justify-center space-x-2 border-2;
+           min-h-[48px] sm:min-h-[56px] sm:min-w-[240px] lg:min-w-[280px]
+           flex items-center justify-center space-x-2 border-2
+           max-w-full overflow-hidden;
   }
 
   .btn-primary {
