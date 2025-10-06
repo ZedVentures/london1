@@ -269,7 +269,14 @@ function App() {
           muted
           loop
           playsInline
+          preload="auto"
           className="absolute inset-0 w-full h-full object-cover z-0"
+          onLoadedData={(e) => {
+            const video = e.currentTarget;
+            video.play().catch(() => {
+              // Autoplay blocked, will show static background
+            });
+          }}
         >
           <source src="https://xfxgavqdippgfoawsavh.supabase.co/storage/v1/object/public/Video%20BAckground/Untitled%20design%20(1).mp4" type="video/mp4" />
           Your browser does not support the video tag.
