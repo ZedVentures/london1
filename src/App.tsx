@@ -202,14 +202,14 @@ function App() {
           <div className="flex justify-between items-center py-2">
             {/* Logo */}
             <div className="flex items-center">
-              <img 
-                src="https://i.imgur.com/Lvcw9Vh.png" 
-                alt="Purple Guard Advisory Logo" 
+              <img
+                src="https://images2.imgbox.com/5f/42/iA7HFXwy_o.png"
+                alt="Kelvin Growth Logo"
                 className="h-24 w-auto transform hover:scale-105 transition-transform duration-300"
               />
               <span className={`text-xl font-semibold transition-colors duration-300 -ml-2 ${
                 isScrolled ? 'text-gray-800' : 'text-white drop-shadow-lg'
-              }`}>Purple Guard Advisory</span>
+              }`}>Kelvin Growth</span>
             </div>
 
             {/* Desktop Navigation */}
