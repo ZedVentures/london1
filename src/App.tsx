@@ -201,12 +201,17 @@ function App() {
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-2">
             {/* Logo */}
-            <div className="flex items-center">
+            <div className="flex items-center gap-4">
               <img
                 src="/Copy of Add a heading.png"
                 alt="Kelvin Growth Logo"
                 className="h-20 sm:h-24 lg:h-28 w-auto object-contain transform hover:scale-105 transition-transform duration-300"
               />
+              <h1 className={`text-2xl sm:text-3xl lg:text-4xl font-bold tracking-wide transition-colors duration-300 ${
+                isScrolled ? 'text-gray-900' : 'text-white drop-shadow-lg'
+              }`} style={{ fontFamily: 'Cinzel, serif' }}>
+                Kelvin Growth
+              </h1>
             </div>
 
             {/* Desktop Navigation */}
