@@ -4,21 +4,22 @@
 @tailwind utilities;
 @layer components {
   .btn-base {
-    @apply w-full sm:w-auto px-4 sm:px-6 lg:px-8 xl:px-10 py-3 sm:py-4 lg:py-5 
+    @apply w-full sm:w-auto px-4 sm:px-6 lg:px-8 xl:px-10 py-3 sm:py-4 lg:py-5
            rounded-lg sm:rounded-xl font-black text-base sm:text-lg lg:text-xl
-           transition-all duration-500 hover:scale-105 hover:shadow-2xl 
-           min-h-[48px] sm:min-h-[56px] flex items-center justify-center space-x-2;
+           transition-all duration-500 hover:scale-105 hover:shadow-2xl
+           min-h-[48px] sm:min-h-[56px] min-w-[280px] sm:min-w-[320px]
+           flex items-center justify-center space-x-2 border-2;
   }
 
   .btn-primary {
-    @apply btn-base bg-gradient-to-r from-purple-800 to-indigo-900 
-           hover:from-purple-900 hover:to-indigo-800 text-white 
-           border-2 border-purple-600 hover:border-purple-700;
+    @apply btn-base bg-gradient-to-r from-purple-800 to-indigo-900
+           hover:from-purple-900 hover:to-indigo-800 text-white
+           border-purple-600 hover:border-purple-700;
   }
 
   .btn-secondary {
-    @apply btn-base bg-transparent text-purple-700 
-           hover:bg-purple-50 border-2 border-purple-700 hover:border-purple-800;
+    @apply btn-base bg-transparent text-purple-700
+           hover:bg-purple-50 border-purple-700 hover:border-purple-800;
   }
 }
 /* Custom font family */
