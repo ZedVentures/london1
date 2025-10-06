@@ -203,7 +203,7 @@ function App() {
             {/* Logo */}
             <div className="flex items-center">
               <img
-                src="https://images2.imgbox.com/5f/42/iA7HFXwy_o.png"
+                src="https://images2.imgbox.com/a3/dd/opGwkRK3_o.png"
                 alt="Kelvin Growth Logo"
                 className="h-32 w-auto transform hover:scale-105 transition-transform duration-300"
               />
