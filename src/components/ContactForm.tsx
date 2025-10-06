@@ -16,8 +16,8 @@ const ContactForm: React.FC = () => {
     <section id="contact" className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-indigo-900 via-purple-900 to-violet-800">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8 sm:mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6 px-2">
-            Ready to Transform Your Business?
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 sm:mb-6 px-2 tracking-tight">
+            <span className="bg-gradient-to-r from-white via-amber-200 to-white bg-clip-text text-transparent drop-shadow-2xl">Ready to Transform Your Business?</span>
           </h2>
           <p className="text-lg sm:text-xl text-purple-100 max-w-2xl mx-auto px-4">
             Get in touch to discuss how the VIPI programme can unlock your business potential.

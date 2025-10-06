@@ -205,7 +205,7 @@ function App() {
               <img
                 src="https://images2.imgbox.com/5f/42/iA7HFXwy_o.png"
                 alt="Kelvin Growth Logo"
-                className="h-24 w-auto transform hover:scale-105 transition-transform duration-300"
+                className="h-32 w-auto transform hover:scale-105 transition-transform duration-300"
               />
             </div>
 
@@ -557,8 +557,8 @@ function App() {
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20 relative z-10">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
-              The <span className="bg-gradient-to-r from-white to-purple-100 bg-clip-text text-transparent">VIPI</span> Programme
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-8 leading-tight tracking-tight">
+              The <span className="bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-300 bg-clip-text text-transparent drop-shadow-lg animate-pulse">VIPI</span> Programme
             </h2>
             <p className="text-xl md:text-2xl text-purple-100 max-w-4xl mx-auto leading-relaxed mb-12">
              A proven, systematic approach to business transformation that has delivered exceptional results for businesses across the UK.
@@ -839,8 +839,8 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <div className="text-center mb-16 relative z-10">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
-              In Partnership With
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-8 leading-tight tracking-tight">
+              <span className="bg-gradient-to-r from-white via-purple-100 to-white bg-clip-text text-transparent drop-shadow-2xl">In Partnership With</span>
             </h2>
             <p className="text-xl md:text-2xl text-purple-100 max-w-4xl mx-auto leading-relaxed">
               Creating the prosperity of tomorrow alongside the most effective SME advocates in the UK.
