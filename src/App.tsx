@@ -211,17 +211,17 @@ function App() {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#vipi" className={`transition-colors duration-300 font-medium ${
-                isScrolled ? 'text-gray-600 hover:text-purple-800' : 'text-white/90 hover:text-white drop-shadow-md'
+              <a href="#vipi" className={`transition-all duration-300 font-bold text-lg tracking-wide ${
+                isScrolled ? 'text-gray-800 hover:text-purple-800 hover:scale-110' : 'text-white hover:text-purple-200 drop-shadow-lg hover:scale-110'
               }`}>VIPI Programme</a>
-              <a href="#partnerships" className={`transition-colors duration-300 font-medium ${
-                isScrolled ? 'text-gray-600 hover:text-purple-800' : 'text-white/90 hover:text-white drop-shadow-md'
+              <a href="#partnerships" className={`transition-all duration-300 font-bold text-lg tracking-wide ${
+                isScrolled ? 'text-gray-800 hover:text-purple-800 hover:scale-110' : 'text-white hover:text-purple-200 drop-shadow-lg hover:scale-110'
               }`}>Partnerships</a>
-              <a href="#success-stories" className={`transition-colors duration-300 font-medium ${
-                isScrolled ? 'text-gray-600 hover:text-purple-800' : 'text-white/90 hover:text-white drop-shadow-md'
+              <a href="#success-stories" className={`transition-all duration-300 font-bold text-lg tracking-wide ${
+                isScrolled ? 'text-gray-800 hover:text-purple-800 hover:scale-110' : 'text-white hover:text-purple-200 drop-shadow-lg hover:scale-110'
               }`}>Success Stories</a>
-              <a href="#contact" className={`transition-colors duration-300 font-medium ${
-                isScrolled ? 'text-gray-600 hover:text-purple-800' : 'text-white/90 hover:text-white drop-shadow-md'
+              <a href="#contact" className={`transition-all duration-300 font-bold text-lg tracking-wide ${
+                isScrolled ? 'text-gray-800 hover:text-purple-800 hover:scale-110' : 'text-white hover:text-purple-200 drop-shadow-lg hover:scale-110'
               }`}>Contact</a>
               <button 
                 onClick={() => setIsCalculatorOpen(true)}
@@ -557,8 +557,8 @@ function App() {
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20 relative z-10">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-8 leading-tight tracking-tight">
-              The <span className="bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-300 bg-clip-text text-transparent drop-shadow-lg animate-pulse">VIPI</span> Programme
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
+              The <span className="bg-gradient-to-r from-white to-purple-100 bg-clip-text text-transparent">VIPI</span> Programme
             </h2>
             <p className="text-xl md:text-2xl text-purple-100 max-w-4xl mx-auto leading-relaxed mb-12">
              A proven, systematic approach to business transformation that has delivered exceptional results for businesses across the UK.
@@ -839,8 +839,8 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <div className="text-center mb-16 relative z-10">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-8 leading-tight tracking-tight">
-              <span className="bg-gradient-to-r from-white via-purple-100 to-white bg-clip-text text-transparent drop-shadow-2xl">In Partnership With</span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
+              In Partnership With
             </h2>
             <p className="text-xl md:text-2xl text-purple-100 max-w-4xl mx-auto leading-relaxed">
               Creating the prosperity of tomorrow alongside the most effective SME advocates in the UK.

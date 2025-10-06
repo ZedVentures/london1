@@ -225,8 +225,8 @@ const BusinessResults: React.FC = () => {
         <div className={`text-center mb-8 sm:mb-12 lg:mb-16 transition-all duration-1000 ${
           isSectionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 sm:mb-6 px-2 tracking-tight">
-            <span className="bg-gradient-to-r from-purple-800 via-purple-600 to-indigo-600 bg-clip-text text-transparent drop-shadow-lg">Success Stories</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 px-2">
+            Success Stories
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
          See how the VIPI programme has transformed businesses across different sectors.
