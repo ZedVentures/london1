@@ -85,7 +85,26 @@ a:focus {
 .hero-card {
   position: relative;
   z-index: 30;
-  margin-bottom: 2rem; /* Ensure spacing from next section */
+  margin: 2rem 0 4rem 0; /* Increased spacing from next section */
+}
+
+/* Enhanced spacing for larger screens */
+@media (min-width: 640px) {
+  .hero-card {
+    margin: 3rem 0 5rem 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-card {
+    margin: 4rem 0 6rem 0;
+  }
+}
+
+@media (min-width: 1280px) {
+  .hero-card {
+    margin: 5rem 0 8rem 0;
+  }
 }
 
 /* Prevent hero section from interfering with other sections */
