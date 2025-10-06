@@ -215,22 +215,22 @@ function App() {
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
-              <a href="#vipi" className={`transition-all duration-300 font-bold text-lg tracking-wide ${
+            <div className="hidden md:flex items-center gap-8">
+              <a href="#vipi" className={`transition-all duration-300 font-bold text-lg tracking-wide whitespace-nowrap ${
                 isScrolled ? 'text-gray-800 hover:text-purple-800 hover:scale-110' : 'text-white hover:text-purple-200 drop-shadow-lg hover:scale-110'
               }`}>VIPI Programme</a>
-              <a href="#partnerships" className={`transition-all duration-300 font-bold text-lg tracking-wide ${
+              <a href="#partnerships" className={`transition-all duration-300 font-bold text-lg tracking-wide whitespace-nowrap ${
                 isScrolled ? 'text-gray-800 hover:text-purple-800 hover:scale-110' : 'text-white hover:text-purple-200 drop-shadow-lg hover:scale-110'
               }`}>Partnerships</a>
-              <a href="#success-stories" className={`transition-all duration-300 font-bold text-lg tracking-wide ${
+              <a href="#success-stories" className={`transition-all duration-300 font-bold text-lg tracking-wide whitespace-nowrap ${
                 isScrolled ? 'text-gray-800 hover:text-purple-800 hover:scale-110' : 'text-white hover:text-purple-200 drop-shadow-lg hover:scale-110'
               }`}>Success Stories</a>
-              <a href="#contact" className={`transition-all duration-300 font-bold text-lg tracking-wide ${
+              <a href="#contact" className={`transition-all duration-300 font-bold text-lg tracking-wide whitespace-nowrap ${
                 isScrolled ? 'text-gray-800 hover:text-purple-800 hover:scale-110' : 'text-white hover:text-purple-200 drop-shadow-lg hover:scale-110'
               }`}>Contact</a>
-              <button 
+              <button
                 onClick={() => setIsCalculatorOpen(true)}
-                className="bg-purple-800 hover:bg-purple-900 text-white px-6 py-2.5 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                className="bg-purple-800 hover:bg-purple-900 text-white px-6 py-2.5 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg whitespace-nowrap"
               >
                 Valuation Calculator
               </button>
