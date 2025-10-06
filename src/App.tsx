@@ -262,7 +262,7 @@ function App() {
       </header>
 
       {/* Hero Section with Video Background */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 pb-20">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 pb-20 bg-gradient-to-br from-purple-900 via-purple-800 to-indigo-900">
         {/* Video Background */}
         <video
           autoPlay
@@ -274,8 +274,11 @@ function App() {
           onLoadedData={(e) => {
             const video = e.currentTarget;
             video.play().catch(() => {
-              // Autoplay blocked, will show static background
+              console.log('Video autoplay blocked');
             });
+          }}
+          onError={(e) => {
+            console.error('Video failed to load');
           }}
         >
           <source src="https://xfxgavqdippgfoawsavh.supabase.co/storage/v1/object/public/Video%20BAckground/Untitled%20design%20(1).mp4" type="video/mp4" />
