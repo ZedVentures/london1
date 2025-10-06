@@ -203,13 +203,9 @@ function App() {
             {/* Logo */}
             <div className="flex items-center">
               <img
-                src="https://images2.imgbox.com/a3/dd/opGwkRK3_o.png"
+                src="/Copy of Add a heading.png"
                 alt="Kelvin Growth Logo"
                 className="h-20 sm:h-24 lg:h-28 w-auto object-contain transform hover:scale-105 transition-transform duration-300"
-                onError={(e) => {
-                  console.error('Logo failed to load');
-                  e.currentTarget.style.display = 'none';
-                }}
               />
             </div>
 
