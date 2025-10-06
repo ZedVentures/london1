@@ -207,9 +207,6 @@ function App() {
                 alt="Kelvin Growth Logo"
                 className="h-24 w-auto transform hover:scale-105 transition-transform duration-300"
               />
-              <span className={`text-xl font-semibold transition-colors duration-300 -ml-2 ${
-                isScrolled ? 'text-gray-800' : 'text-white drop-shadow-lg'
-              }`}>Kelvin Growth</span>
             </div>
 
             {/* Desktop Navigation */}
