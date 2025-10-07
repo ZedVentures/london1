@@ -867,7 +867,7 @@ function App() {
               {/* Logo */}
               <div className="text-center mb-8">
                 <img
-                  src="https://images2.imgbox.com/16/56/Lz9MsKLf_o.png"
+                  src="https://images2.imgbox.com/47/4e/MMUfVL0I_o.jpeg"
                   alt="MooreMentum Logo"
                   className="w-50 h-auto mx-auto object-contain"
                 />
@@ -903,7 +903,7 @@ function App() {
               {/* Logo */}
               <div className="text-center mb-8">
                 <img
-                  src="https://images2.imgbox.com/47/4e/MMUfVL0I_o.jpeg"
+                  src="https://images2.imgbox.com/16/56/Lz9MsKLf_o.png"
                   alt="Allica Bank Logo"
                   className="w-50 h-auto mx-auto object-contain"
                 />
