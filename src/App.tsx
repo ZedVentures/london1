@@ -213,7 +213,7 @@ function App() {
                 }`} style={{ fontFamily: 'Cinzel, serif' }}>
                   Kelvin Growth
                 </h1>
-                <p className={`text-sm sm:text-base lg:text-lg transition-colors duration-300 ${
+                <p className={`text-sm sm:text-base lg:text-lg font-bold transition-colors duration-300 ${
                   isScrolled ? 'text-gray-700' : 'text-white/90 drop-shadow-lg'
                 }`} style={{ fontFamily: 'Cinzel, serif' }}>
                   we own the outcome
