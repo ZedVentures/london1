@@ -207,11 +207,18 @@ function App() {
                 alt="Kelvin Growth Logo"
                 className="h-20 sm:h-24 lg:h-28 w-auto object-contain transform hover:scale-105 transition-transform duration-300"
               />
-              <h1 className={`text-2xl sm:text-3xl lg:text-4xl font-bold tracking-wide transition-colors duration-300 ${
-                isScrolled ? 'text-gray-900' : 'text-white drop-shadow-lg'
-              }`} style={{ fontFamily: 'Cinzel, serif' }}>
-                Kelvin Growth
-              </h1>
+              <div className="flex flex-col">
+                <h1 className={`text-2xl sm:text-3xl lg:text-4xl font-bold tracking-wide transition-colors duration-300 ${
+                  isScrolled ? 'text-gray-900' : 'text-white drop-shadow-lg'
+                }`} style={{ fontFamily: 'Cinzel, serif' }}>
+                  Kelvin Growth
+                </h1>
+                <p className={`text-sm sm:text-base lg:text-lg transition-colors duration-300 ${
+                  isScrolled ? 'text-gray-700' : 'text-white/90 drop-shadow-lg'
+                }`} style={{ fontFamily: 'Cinzel, serif' }}>
+                  we own the outcome
+                </p>
+              </div>
             </div>
 
             {/* Desktop Navigation */}
