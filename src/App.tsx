@@ -9,6 +9,7 @@ import { useIntersectionObserver } from './components/AnimatedValue';
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [heroLoaded, setHeroLoaded] = useState(false);
   const [mooreMentumRef, isMooreMentumVisible] = useIntersectionObserver({
     threshold: 0.3,
     rootMargin: '-50px'
@@ -56,6 +57,13 @@ function App() {
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setHeroLoaded(true);
+    }, 100);
+    return () => clearTimeout(timer);
   }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -205,9 +213,9 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white font-inter">
-      <header className={`fixed w-full top-0 z-50 transition-all duration-500 ${
+      <header className={`fixed w-full top-0 z-50 transition-all duration-700 ${
         isScrolled ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100' : 'bg-black/20 backdrop-blur-sm'
-      }`}>
+      } ${heroLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-2">
             {/* Logo */}
@@ -311,17 +319,25 @@ function App() {
        <div className="absolute inset-0 bg-black/40 z-10"></div>
 
 <div className="relative z-20 max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 text-center py-16 sm:py-20">
-  <div className="bg-white/95 backdrop-blur-md rounded-3xl p-10 sm:p-12 lg:p-16 shadow-2xl transform hover:scale-105 transition-all duration-500">
-    <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black mb-4 sm:mb-6 lg:mb-8 px-1 sm:px-2">
+  <div className={`bg-white/95 backdrop-blur-md rounded-3xl p-10 sm:p-12 lg:p-16 shadow-2xl transform hover:scale-105 transition-all duration-1000 ${
+    heroLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
+  }`}>
+    <h1 className={`text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black mb-4 sm:mb-6 lg:mb-8 px-1 sm:px-2 transition-all duration-1000 delay-300 ${
+      heroLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+    }`}>
       <span className="text-black">Growth advice starts with one question:</span>
       <span className="block text-purple-800 mt-2">What is possible?</span>
     </h1>
 
-    <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-gray-700 mb-6 sm:mb-8 lg:mb-10 leading-relaxed px-2 sm:px-4">
+    <p className={`text-base sm:text-lg lg:text-xl xl:text-2xl text-gray-700 mb-6 sm:mb-8 lg:mb-10 leading-relaxed px-2 sm:px-4 transition-all duration-1000 delay-500 ${
+      heroLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+    }`}>
       Discover how our proven VIPI framework can unlock your business potential and transform your vision into measurable results.
     </p>
 
-    <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-6 justify-center items-stretch w-full max-w-full px-2">
+    <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-6 justify-center items-stretch w-full max-w-full px-2 transition-all duration-1000 delay-700 ${
+      heroLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+    }`}>
 
       {/* Start Conversation */}
       <a
@@ -355,7 +371,9 @@ function App() {
   </div>
 </div>
         {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+        <div className={`absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 transition-all duration-1000 delay-1000 ${
+          heroLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
           <div className="animate-bounce">
             <div className="w-6 h-10 border-2 border-white/60 rounded-full flex justify-center">
               <div className="w-1 h-3 bg-white/60 rounded-full mt-2 animate-pulse"></div>
