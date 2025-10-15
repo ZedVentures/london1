@@ -62,7 +62,7 @@ function App() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setHeroLoaded(true);
-    }, 600);
+    }, 200);
     return () => clearTimeout(timer);
   }, []);
 
@@ -213,9 +213,9 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white font-inter">
-      <header className={`fixed w-full top-0 z-50 transition-all duration-1500 ease-out ${
+      <header className={`fixed w-full top-0 z-50 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
         isScrolled ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100' : 'bg-black/20 backdrop-blur-sm'
-      } ${heroLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-24'}`}>
+      } ${heroLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-12'}`}>
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-2">
             {/* Logo */}
@@ -319,32 +319,32 @@ function App() {
        <div className="absolute inset-0 bg-black/40 z-10"></div>
 
 <div className="relative z-20 max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 text-center py-16 sm:py-20">
-  <div className={`bg-white/95 backdrop-blur-md rounded-3xl p-10 sm:p-12 lg:p-16 shadow-2xl transform hover:scale-105 transition-all duration-2000 ease-out ${
-    heroLoaded ? 'opacity-100 scale-100 rotate-0' : 'opacity-0 scale-50 rotate-6'
+  <div className={`bg-white/95 backdrop-blur-md rounded-3xl p-10 sm:p-12 lg:p-16 shadow-2xl transform hover:scale-105 transition-all duration-1000 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
+    heroLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
   }`}
-  style={{ transitionDelay: '300ms' }}>
-    <h1 className={`text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black mb-4 sm:mb-6 lg:mb-8 px-1 sm:px-2 transition-all duration-1500 ease-out ${
-      heroLoaded ? 'opacity-100 translate-y-0 blur-0 scale-100' : 'opacity-0 translate-y-24 blur-md scale-90'
+  style={{ transitionDelay: '100ms' }}>
+    <h1 className={`text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black mb-4 sm:mb-6 lg:mb-8 px-1 sm:px-2 transition-all duration-800 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
+      heroLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
     }`}
-    style={{ transitionDelay: '800ms' }}>
+    style={{ transitionDelay: '250ms' }}>
       <span className="text-black">Growth advice starts with one question:</span>
-      <span className={`block text-purple-800 mt-2 transition-all duration-1500 ease-out ${
-        heroLoaded ? 'opacity-100 translate-x-0 rotate-0' : 'opacity-0 -translate-x-20 -rotate-12'
+      <span className={`block text-purple-800 mt-2 transition-all duration-800 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
+        heroLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
       }`}
-      style={{ transitionDelay: '1200ms' }}>What is possible?</span>
+      style={{ transitionDelay: '400ms' }}>What is possible?</span>
     </h1>
 
-    <p className={`text-base sm:text-lg lg:text-xl xl:text-2xl text-gray-700 mb-6 sm:mb-8 lg:mb-10 leading-relaxed px-2 sm:px-4 transition-all duration-1500 ease-out ${
-      heroLoaded ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-16 blur-lg'
+    <p className={`text-base sm:text-lg lg:text-xl xl:text-2xl text-gray-700 mb-6 sm:mb-8 lg:mb-10 leading-relaxed px-2 sm:px-4 transition-all duration-800 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
+      heroLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
     }`}
-    style={{ transitionDelay: '1500ms' }}>
+    style={{ transitionDelay: '550ms' }}>
       Discover how our proven VIPI framework can unlock your business potential and transform your vision into measurable results.
     </p>
 
-    <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-6 justify-center items-stretch w-full max-w-full px-2 transition-all duration-1500 ease-out ${
-      heroLoaded ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-20 scale-75'
+    <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-6 justify-center items-stretch w-full max-w-full px-2 transition-all duration-800 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
+      heroLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
     }`}
-    style={{ transitionDelay: '1900ms' }}>
+    style={{ transitionDelay: '700ms' }}>
 
       {/* Start Conversation */}
       <a
@@ -378,10 +378,10 @@ function App() {
   </div>
 </div>
         {/* Scroll Indicator */}
-        <div className={`absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 transition-all duration-1500 ease-out ${
-          heroLoaded ? 'opacity-100 translate-y-0 scale-100 rotate-0' : 'opacity-0 translate-y-24 scale-0 rotate-180'
+        <div className={`absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 transition-all duration-800 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
+          heroLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}
-        style={{ transitionDelay: '2400ms' }}>
+        style={{ transitionDelay: '900ms' }}>
           <div className="animate-bounce">
             <div className="w-6 h-10 border-2 border-white/60 rounded-full flex justify-center">
               <div className="w-1 h-3 bg-white/60 rounded-full mt-2 animate-pulse"></div>
