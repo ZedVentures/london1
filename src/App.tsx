@@ -333,25 +333,25 @@ function App() {
           heroLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}
         style={{ transitionDelay: '200ms' }}>
-          Transforming the UK,{' '}
+          Transforming{' '}
         </span>
         <span className={`inline-block transition-all duration-1000 ease-[cubic-bezier(0.34,1.56,0.64,1)] bg-gradient-to-r from-purple-800 via-indigo-900 to-purple-900 bg-clip-text text-transparent font-extrabold ${
           heroLoaded ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-90'
         }`}
         style={{ transitionDelay: '400ms' }}>
-          One Business{' '}
+          Potential{' '}
         </span>
         <span className={`inline-block transition-all duration-800 ease-[cubic-bezier(0.34,1.56,0.64,1)] text-gray-900 ${
           heroLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}
         style={{ transitionDelay: '600ms' }}>
-          at a{' '}
+          Into{' '}
         </span>
         <span className={`inline-block transition-all duration-1000 ease-[cubic-bezier(0.34,1.56,0.64,1)] bg-gradient-to-r from-purple-700 via-indigo-800 to-purple-800 bg-clip-text text-transparent font-extrabold animate-pulse ${
           heroLoaded ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-90'
         }`}
         style={{ transitionDelay: '800ms' }}>
-          Time.
+          Performance.
         </span>
       </h1>
 
