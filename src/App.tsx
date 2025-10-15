@@ -318,46 +318,66 @@ function App() {
         {/* Dark Overlay */}
        <div className="absolute inset-0 bg-black/40 z-10"></div>
 
+{/* Large Overlay Text - Initially Covers Everything */}
+<div className={`absolute inset-0 z-30 flex items-center justify-center pointer-events-none transition-all duration-1500 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
+  heroLoaded ? 'opacity-0 -translate-y-32' : 'opacity-100 translate-y-0'
+}`}>
+  <h1 className="text-4xl sm:text-5xl lg:text-7xl xl:text-8xl font-black text-center px-4 leading-tight">
+    <span className="inline-block text-white drop-shadow-2xl">
+      Helping UK Businesses{' '}
+    </span>
+    <span className="inline-block bg-gradient-to-r from-purple-400 via-purple-300 to-indigo-400 bg-clip-text text-transparent font-extrabold drop-shadow-2xl">
+      Thrive
+    </span>
+    <span className="block text-white drop-shadow-2xl mt-2">
+      , so the Whole Nation{' '}
+    </span>
+    <span className="inline-block bg-gradient-to-r from-purple-300 via-indigo-300 to-purple-400 bg-clip-text text-transparent font-extrabold drop-shadow-2xl">
+      Grows.
+    </span>
+  </h1>
+</div>
+
 <div className="relative z-20 max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 text-center py-16 sm:py-20">
-  <div className={`bg-white/95 backdrop-blur-md rounded-3xl p-10 sm:p-12 lg:p-16 shadow-2xl transform hover:scale-105 transition-all duration-1000 ${
-    heroLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
+  <div className={`bg-white/95 backdrop-blur-md rounded-3xl p-10 sm:p-12 lg:p-16 shadow-2xl transform hover:scale-105 transition-all duration-1500 delay-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
+    heroLoaded ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-50 translate-y-20'
   }`}>
-    <h1 className={`text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black mb-4 sm:mb-6 lg:mb-8 px-1 sm:px-2 ${
+    <h1 className={`text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black mb-4 sm:mb-6 lg:mb-8 px-1 sm:px-2 transition-all duration-1000 delay-1000 ${
       heroLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
     }`}>
       <span className={`inline-block transition-all duration-800 ease-[cubic-bezier(0.34,1.56,0.64,1)] text-gray-900 ${
         heroLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
-      style={{ transitionDelay: '300ms' }}>
-        When UK Businesses{' '}
+      style={{ transitionDelay: '1200ms' }}>
+        Helping UK Businesses{' '}
       </span>
       <span className={`inline-block transition-all duration-1000 ease-[cubic-bezier(0.34,1.56,0.64,1)] bg-gradient-to-r from-purple-800 via-indigo-900 to-purple-900 bg-clip-text text-transparent font-extrabold ${
         heroLoaded ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-90'
       }`}
-      style={{ transitionDelay: '500ms' }}>
+      style={{ transitionDelay: '1400ms' }}>
         Thrive
       </span>
       <span className={`inline-block transition-all duration-800 ease-[cubic-bezier(0.34,1.56,0.64,1)] text-gray-900 ${
         heroLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
-      style={{ transitionDelay: '700ms' }}>
-        , the Whole Nation{' '}
+      style={{ transitionDelay: '1600ms' }}>
+        , so the Whole Nation{' '}
       </span>
       <span className={`inline-block transition-all duration-1000 ease-[cubic-bezier(0.34,1.56,0.64,1)] bg-gradient-to-r from-purple-700 via-indigo-800 to-purple-800 bg-clip-text text-transparent font-extrabold animate-pulse ${
         heroLoaded ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-90'
       }`}
-      style={{ transitionDelay: '900ms' }}>
+      style={{ transitionDelay: '1800ms' }}>
         Grows.
       </span>
     </h1>
 
-    <p className={`text-base sm:text-lg lg:text-xl xl:text-2xl text-gray-700 mb-6 sm:mb-8 lg:mb-10 leading-relaxed px-2 sm:px-4 transition-all duration-1000 delay-500 ${
+    <p className={`text-base sm:text-lg lg:text-xl xl:text-2xl text-gray-700 mb-6 sm:mb-8 lg:mb-10 leading-relaxed px-2 sm:px-4 transition-all duration-1000 delay-[2000ms] ${
       heroLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
     }`}>
       Discover how our proven VIPI framework can unlock your business potential and transform your vision into measurable results.
     </p>
 
-    <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-6 justify-center items-stretch w-full max-w-full px-2 transition-all duration-1000 delay-700 ${
+    <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-6 justify-center items-stretch w-full max-w-full px-2 transition-all duration-1000 delay-[2200ms] ${
       heroLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
     }`}>
 
