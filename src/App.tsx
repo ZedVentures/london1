@@ -322,26 +322,6 @@ function App() {
   <div className={`bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl transform hover:scale-105 transition-all duration-1000 ${
     heroLoaded ? 'opacity-100 scale-100 translate-y-0' : 'opacity-100 scale-100 translate-y-0'
   }`}>
-    {/* Initial Large Text Overlay - Covers Card Initially */}
-    <div className={`absolute inset-0 z-10 flex items-center justify-center pointer-events-none transition-all duration-1000 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
-      heroLoaded ? 'opacity-0 scale-75' : 'opacity-100 scale-100'
-    }`}>
-      <h1 className="text-3xl sm:text-4xl lg:text-6xl xl:text-7xl font-black text-center px-4 leading-tight">
-        <span className="inline-block text-gray-900">
-          Helping UK Businesses{' '}
-        </span>
-        <span className="inline-block bg-gradient-to-r from-purple-800 via-indigo-900 to-purple-900 bg-clip-text text-transparent font-extrabold">
-          Thrive,
-        </span>
-        <span className="block text-gray-900 mt-2">
-          so the Whole Nation{' '}
-        </span>
-        <span className="inline-block bg-gradient-to-r from-purple-700 via-indigo-800 to-purple-800 bg-clip-text text-transparent font-extrabold">
-          Grows.
-        </span>
-      </h1>
-    </div>
-
     {/* Card Content - Appears After 2 Seconds */}
     <div className={`relative z-0 p-10 sm:p-12 lg:p-16 transition-all duration-1000 ${
       heroLoaded ? 'opacity-100' : 'opacity-0'
