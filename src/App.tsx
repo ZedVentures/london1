@@ -334,7 +334,7 @@ function App() {
           Thrive
         </span>
         <span className="block text-gray-900 mt-2">
-          , so the Whole Nation{' '}
+          so the Whole Nation{' '}
         </span>
         <span className="inline-block bg-gradient-to-r from-purple-700 via-indigo-800 to-purple-800 bg-clip-text text-transparent font-extrabold">
           Grows.
@@ -365,7 +365,7 @@ function App() {
           heroLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}
         style={{ transitionDelay: '600ms' }}>
-          , so the Whole Nation{' '}
+          so the Whole Nation{' '}
         </span>
         <span className={`inline-block transition-all duration-1000 ease-[cubic-bezier(0.34,1.56,0.64,1)] bg-gradient-to-r from-purple-700 via-indigo-800 to-purple-800 bg-clip-text text-transparent font-extrabold animate-pulse ${
           heroLoaded ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-90'
