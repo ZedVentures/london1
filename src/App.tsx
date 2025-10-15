@@ -409,11 +409,18 @@ function App() {
         </div>
       </section>
 
-      {/* Flowing Wave Divider */}
-      <div className="relative w-full h-24 bg-gradient-to-br from-purple-900 via-purple-800 to-indigo-900">
+      {/* Flowing Wave Divider with Gradient Transition */}
+      <div className="relative w-full h-32 bg-gradient-to-br from-purple-900 via-purple-800 to-indigo-900">
         <svg className="absolute top-0 left-0 w-full h-full" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="waveGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style={{stopColor: 'white', stopOpacity: 1}} />
+              <stop offset="50%" style={{stopColor: '#f3e8ff', stopOpacity: 1}} />
+              <stop offset="100%" style={{stopColor: 'white', stopOpacity: 1}} />
+            </linearGradient>
+          </defs>
           <path d="M0,50 Q300,10 600,40 T1200,30 L1200,0 L0,0 Z"
-                fill="white" />
+                fill="url(#waveGradient1)" />
         </svg>
       </div>
 
@@ -580,11 +587,18 @@ function App() {
         </div>
       </section>
 
-      {/* Wave Divider */}
-      <div className="relative w-full h-20 bg-gradient-to-br from-gray-50 to-white">
+      {/* Wave Divider with Multi-Color Gradient */}
+      <div className="relative w-full h-24 bg-gradient-to-br from-gray-50 to-white">
         <svg className="absolute top-0 left-0 w-full h-full" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="waveGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style={{stopColor: '#581c87', stopOpacity: 1}} />
+              <stop offset="50%" style={{stopColor: '#7c3aed', stopOpacity: 1}} />
+              <stop offset="100%" style={{stopColor: '#581c87', stopOpacity: 1}} />
+            </linearGradient>
+          </defs>
           <path d="M0,0 C300,80 600,20 900,60 C1050,80 1150,40 1200,50 L1200,120 L0,120 Z"
-                fill="rgb(88, 28, 135)" opacity="0.95" />
+                fill="url(#waveGradient2)" />
         </svg>
       </div>
 
@@ -814,11 +828,19 @@ function App() {
         </div>
       </section>
 
-      {/* Flowing Wave Divider */}
-      <div className="relative w-full h-24 bg-gradient-to-br from-purple-900 via-purple-800 to-indigo-900">
+      {/* Flowing Wave Divider with Gradient Transition */}
+      <div className="relative w-full h-32 bg-gradient-to-br from-purple-900 via-purple-800 to-indigo-900">
         <svg className="absolute top-0 left-0 w-full h-full" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="waveGradient3" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style={{stopColor: 'white', stopOpacity: 1}} />
+              <stop offset="25%" style={{stopColor: '#e9d5ff', stopOpacity: 1}} />
+              <stop offset="75%" style={{stopColor: '#e9d5ff', stopOpacity: 1}} />
+              <stop offset="100%" style={{stopColor: 'white', stopOpacity: 1}} />
+            </linearGradient>
+          </defs>
           <path d="M0,30 C200,80 400,10 600,50 C800,90 1000,20 1200,60 L1200,0 L0,0 Z"
-                fill="white" />
+                fill="url(#waveGradient3)" />
         </svg>
       </div>
 
@@ -931,11 +953,19 @@ function App() {
         </div>
       </section>
 
-      {/* Flowing Wave Divider */}
-      <div className="relative w-full h-24 bg-white">
+      {/* Flowing Wave Divider with Gradient Transition */}
+      <div className="relative w-full h-32 bg-white">
         <svg className="absolute top-0 left-0 w-full h-full" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="waveGradient4" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style={{stopColor: '#581c87', stopOpacity: 1}} />
+              <stop offset="33%" style={{stopColor: '#7c3aed', stopOpacity: 1}} />
+              <stop offset="66%" style={{stopColor: '#6366f1', stopOpacity: 1}} />
+              <stop offset="100%" style={{stopColor: '#581c87', stopOpacity: 1}} />
+            </linearGradient>
+          </defs>
           <path d="M0,60 Q400,0 800,50 T1200,40 L1200,0 L0,0 Z"
-                fill="rgb(88, 28, 135)" />
+                fill="url(#waveGradient4)" />
         </svg>
       </div>
 
