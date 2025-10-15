@@ -329,25 +329,25 @@ function App() {
       <h1 className={`text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black mb-4 sm:mb-6 lg:mb-8 px-1 sm:px-2 transition-all duration-1000 ${
         heroLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}>
-        <span className={`inline-block transition-all duration-800 ease-[cubic-bezier(0.34,1.56,0.64,1)] text-gray-900 ${
+        <span className={`transition-all duration-800 ease-[cubic-bezier(0.34,1.56,0.64,1)] text-gray-900 ${
           heroLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}
         style={{ transitionDelay: '200ms' }}>
           Transforming{' '}
         </span>
-        <span className={`inline-block transition-all duration-1000 ease-[cubic-bezier(0.34,1.56,0.64,1)] bg-gradient-to-r from-purple-800 via-indigo-900 to-purple-900 bg-clip-text text-transparent font-extrabold ${
+        <span className={`transition-all duration-1000 ease-[cubic-bezier(0.34,1.56,0.64,1)] bg-gradient-to-r from-purple-800 via-indigo-900 to-purple-900 bg-clip-text text-transparent font-extrabold ${
           heroLoaded ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-90'
         }`}
         style={{ transitionDelay: '400ms' }}>
           Potential{' '}
         </span>
-        <span className={`inline-block transition-all duration-800 ease-[cubic-bezier(0.34,1.56,0.64,1)] text-gray-900 ${
+        <span className={`transition-all duration-800 ease-[cubic-bezier(0.34,1.56,0.64,1)] text-gray-900 ${
           heroLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}
         style={{ transitionDelay: '600ms' }}>
           Into{' '}
         </span>
-        <span className={`inline-block transition-all duration-1000 ease-[cubic-bezier(0.34,1.56,0.64,1)] bg-gradient-to-r from-purple-700 via-indigo-800 to-purple-800 bg-clip-text text-transparent font-extrabold animate-pulse ${
+        <span className={`transition-all duration-1000 ease-[cubic-bezier(0.34,1.56,0.64,1)] bg-gradient-to-r from-purple-700 via-indigo-800 to-purple-800 bg-clip-text text-transparent font-extrabold animate-pulse ${
           heroLoaded ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-90'
         }`}
         style={{ transitionDelay: '800ms' }}>
