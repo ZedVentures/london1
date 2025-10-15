@@ -331,7 +331,7 @@ function App() {
           Helping UK Businesses{' '}
         </span>
         <span className="inline-block bg-gradient-to-r from-purple-800 via-indigo-900 to-purple-900 bg-clip-text text-transparent font-extrabold">
-          Thrive
+          Thrive,
         </span>
         <span className="block text-gray-900 mt-2">
           so the Whole Nation{' '}
@@ -359,7 +359,7 @@ function App() {
           heroLoaded ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-90'
         }`}
         style={{ transitionDelay: '400ms' }}>
-          Thrive
+          Thrive,
         </span>
         <span className={`inline-block transition-all duration-800 ease-[cubic-bezier(0.34,1.56,0.64,1)] text-gray-900 ${
           heroLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
