@@ -331,7 +331,7 @@ function App() {
       style={{ transitionDelay: '300ms' }}>
         When UK Businesses{' '}
       </span>
-      <span className={`inline-block transition-all duration-1000 ease-[cubic-bezier(0.34,1.56,0.64,1)] bg-gradient-to-r from-purple-600 via-purple-700 to-purple-800 bg-clip-text text-transparent font-extrabold ${
+      <span className={`inline-block transition-all duration-1000 ease-[cubic-bezier(0.34,1.56,0.64,1)] bg-gradient-to-r from-purple-800 via-indigo-900 to-purple-900 bg-clip-text text-transparent font-extrabold ${
         heroLoaded ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-90'
       }`}
       style={{ transitionDelay: '500ms' }}>
@@ -343,7 +343,7 @@ function App() {
       style={{ transitionDelay: '700ms' }}>
         , the Whole Nation{' '}
       </span>
-      <span className={`inline-block transition-all duration-1000 ease-[cubic-bezier(0.34,1.56,0.64,1)] bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 bg-clip-text text-transparent font-extrabold animate-pulse ${
+      <span className={`inline-block transition-all duration-1000 ease-[cubic-bezier(0.34,1.56,0.64,1)] bg-gradient-to-r from-purple-700 via-indigo-800 to-purple-800 bg-clip-text text-transparent font-extrabold animate-pulse ${
         heroLoaded ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-90'
       }`}
       style={{ transitionDelay: '900ms' }}>
