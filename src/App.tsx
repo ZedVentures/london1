@@ -409,6 +409,14 @@ function App() {
         </div>
       </section>
 
+      {/* Flowing Wave Divider */}
+      <div className="relative w-full h-24 bg-gradient-to-br from-purple-900 via-purple-800 to-indigo-900">
+        <svg className="absolute top-0 left-0 w-full h-full" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M0,50 Q300,10 600,40 T1200,30 L1200,0 L0,0 Z"
+                fill="white" />
+        </svg>
+      </div>
+
       {/* Who We Work With Section */}
       <section className="py-24 bg-gradient-to-br from-purple-900 via-purple-800 to-indigo-900 text-white relative overflow-hidden">
         {/* Background Pattern */}
@@ -526,7 +534,10 @@ function App() {
           </div>
 
           {/* Bottom Section - Not Right For */}
-          <div className="mt-20 pt-16 border-t border-white/20">
+          <div className="mt-20 pt-16 relative">
+            <svg className="absolute top-0 left-0 w-full h-16 -translate-y-full" viewBox="0 0 1200 120" preserveAspectRatio="none">
+              <path d="M0,0 C150,60 350,0 600,50 C850,100 1050,40 1200,70 L1200,120 L0,120 Z" fill="rgba(255,255,255,0.1)" />
+            </svg>
             <div className="text-center mb-12">
               <h3 className="text-3xl font-bold text-white mb-4">We're Not Right For Everyone</h3>
               <p className="text-purple-100 text-lg max-w-2xl mx-auto">
@@ -568,6 +579,14 @@ function App() {
           </div>
         </div>
       </section>
+
+      {/* Wave Divider */}
+      <div className="relative w-full h-20 bg-gradient-to-br from-gray-50 to-white">
+        <svg className="absolute top-0 left-0 w-full h-full" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M0,0 C300,80 600,20 900,60 C1050,80 1150,40 1200,50 L1200,120 L0,120 Z"
+                fill="rgb(88, 28, 135)" opacity="0.95" />
+        </svg>
+      </div>
 
       {/* VIPI Programme Metrics Section */}
       <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
@@ -795,6 +814,14 @@ function App() {
         </div>
       </section>
 
+      {/* Flowing Wave Divider */}
+      <div className="relative w-full h-24 bg-gradient-to-br from-purple-900 via-purple-800 to-indigo-900">
+        <svg className="absolute top-0 left-0 w-full h-full" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M0,30 C200,80 400,10 600,50 C800,90 1000,20 1200,60 L1200,0 L0,0 Z"
+                fill="white" />
+        </svg>
+      </div>
+
       {/* Partnership Section */}
       <section id="partnerships" className="py-24 bg-gradient-to-br from-purple-900 via-purple-800 to-indigo-900 relative overflow-hidden">
         {/* Animated Background Elements */}
@@ -903,6 +930,14 @@ function App() {
           </div>
         </div>
       </section>
+
+      {/* Flowing Wave Divider */}
+      <div className="relative w-full h-24 bg-white">
+        <svg className="absolute top-0 left-0 w-full h-full" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M0,60 Q400,0 800,50 T1200,40 L1200,0 L0,0 Z"
+                fill="rgb(88, 28, 135)" />
+        </svg>
+      </div>
 
       {/* Case Studies Section */}
       <section id="success-stories">
