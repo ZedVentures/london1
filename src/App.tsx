@@ -221,7 +221,7 @@ function App() {
             {/* Logo */}
             <div className="flex items-center gap-4">
               <img
-                src="/Add a heading.png"
+                src="/Copy of Add a heading.svg"
                 alt="Kelvin Growth Logo"
                 className="h-16 sm:h-20 lg:h-24 w-auto object-contain transform hover:scale-105 transition-transform duration-300"
               />
