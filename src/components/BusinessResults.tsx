@@ -206,6 +206,16 @@ const BusinessResults: React.FC = () => {
     rootMargin: '-50px'
   }, true);
 
+  useEffect(() => {
+    if (isSectionVisible) {
+      const interval = setInterval(() => {
+        setCurrentSlide((prev) => (prev + 1) % businessCases.length);
+      }, 5000);
+
+      return () => clearInterval(interval);
+    }
+  }, [isSectionVisible]);
+
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % businessCases.length);
   };
