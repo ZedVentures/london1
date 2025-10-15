@@ -4,7 +4,7 @@ import ContactForm from './components/ContactForm';
 import BusinessResults from './components/BusinessResults';
 import ValuationCalculator from './components/ValuationCalculator';
 import VIPIQuoteCard from './components/VIPIQuoteCard';
-import { useIntersectionObserver } from './components/AnimatedValue';
+import AnimatedValue, { useIntersectionObserver } from './components/AnimatedValue';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -584,26 +584,35 @@ function App() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
-            {metrics.map((metric, index) => (
-              <div 
-                key={index}
-                className="group relative bg-white p-8 lg:p-10 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
-              >
-                <div className="text-purple-800 mb-6 group-hover:scale-110 transition-transform duration-300">
-                  {metric.icon}
+            {metrics.map((metric, index) => {
+              const [ref, isVisible] = useIntersectionObserver({ threshold: 0.3 }, true);
+
+              return (
+                <div
+                  key={index}
+                  ref={ref as React.RefObject<HTMLDivElement>}
+                  className="group relative bg-white p-8 lg:p-10 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+                >
+                  <div className="text-purple-800 mb-6 group-hover:scale-110 transition-transform duration-300">
+                    {metric.icon}
+                  </div>
+                  <div className="text-4xl lg:text-5xl font-bold text-gray-800 mb-3 group-hover:text-purple-800 transition-colors duration-300">
+                    <AnimatedValue
+                      value={metric.value}
+                      isVisible={isVisible as boolean}
+                      delay={index * 200}
+                    />
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                    {metric.label}
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    {metric.description}
+                  </p>
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-600 to-purple-800 rounded-t-2xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
                 </div>
-                <div className="text-4xl lg:text-5xl font-bold text-gray-800 mb-3 group-hover:text-purple-800 transition-colors duration-300">
-                  {metric.value}
-                </div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                  {metric.label}
-                </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {metric.description}
-                </p>
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-600 to-purple-800 rounded-t-2xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
