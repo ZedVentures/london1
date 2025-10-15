@@ -274,7 +274,7 @@ function App() {
       </header>
 
       {/* Hero Section with Video Background */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 pb-20 bg-gradient-to-br from-purple-900 via-purple-800 to-indigo-900">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 pb-0 bg-gradient-to-br from-purple-900 via-purple-800 to-indigo-900">
         {/* Video Background */}
         <video
           autoPlay
@@ -297,8 +297,8 @@ function App() {
           Your browser does not support the video tag.
         </video>
 
-        {/* Dark Overlay */}
-       <div className="absolute inset-0 bg-black/40 z-10"></div>
+        {/* Dark Overlay with gradient fade to next section */}
+       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/40 to-transparent z-10"></div>
 
 <div className="relative z-20 max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 text-center py-16 sm:py-20">
   <div className="bg-white/95 backdrop-blur-md rounded-3xl p-10 sm:p-12 lg:p-16 shadow-2xl transform hover:scale-105 transition-all duration-500">
@@ -355,12 +355,15 @@ function App() {
       </section>
 
       {/* Who We Work With Section */}
-      <section className="py-24 bg-gradient-to-br from-purple-900 via-purple-800 to-indigo-900 text-white relative overflow-hidden">
+      <section className="py-24 bg-gradient-to-br from-purple-900 via-purple-800 to-indigo-900 text-white relative overflow-hidden -mt-32">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full -translate-x-48 -translate-y-48"></div>
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full translate-x-48 translate-y-48"></div>
         </div>
+
+        {/* Smooth transition overlay */}
+        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-transparent to-purple-900/50 z-0"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="text-center mb-20">
