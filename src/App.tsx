@@ -213,10 +213,17 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white font-inter">
-      <header className={`fixed w-full top-0 z-50 transition-all duration-700 ${
+      <header className={`fixed w-full top-0 z-50 transition-all duration-700 overflow-hidden ${
         isScrolled ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100' : 'bg-black/20 backdrop-blur-sm'
       } ${heroLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
-        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Wipe Animation Overlay */}
+        <div
+          className={`absolute inset-0 bg-gradient-to-r from-purple-900 via-purple-700 to-indigo-900 transition-transform duration-1000 ease-in-out ${
+            heroLoaded ? 'translate-x-full' : 'translate-x-0'
+          }`}
+          style={{ transitionDelay: '300ms' }}
+        />
+        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex justify-between items-center py-2">
             {/* Logo */}
             <div className="flex items-center gap-4">
