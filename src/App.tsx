@@ -322,10 +322,33 @@ function App() {
   <div className={`bg-white/95 backdrop-blur-md rounded-3xl p-10 sm:p-12 lg:p-16 shadow-2xl transform hover:scale-105 transition-all duration-1000 ${
     heroLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
   }`}>
-    <h1 className={`text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black mb-4 sm:mb-6 lg:mb-8 px-1 sm:px-2 transition-all duration-1000 delay-300 ${
+    <h1 className={`text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black mb-4 sm:mb-6 lg:mb-8 px-1 sm:px-2 ${
       heroLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
     }`}>
-      <span className="text-black">When UK Businesses Thrive, the Whole Nation Grows.</span>
+      <span className={`inline-block transition-all duration-800 ease-[cubic-bezier(0.34,1.56,0.64,1)] text-gray-900 ${
+        heroLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+      }`}
+      style={{ transitionDelay: '300ms' }}>
+        When UK Businesses{' '}
+      </span>
+      <span className={`inline-block transition-all duration-1000 ease-[cubic-bezier(0.34,1.56,0.64,1)] bg-gradient-to-r from-purple-600 via-purple-700 to-purple-800 bg-clip-text text-transparent font-extrabold ${
+        heroLoaded ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-90'
+      }`}
+      style={{ transitionDelay: '500ms' }}>
+        Thrive
+      </span>
+      <span className={`inline-block transition-all duration-800 ease-[cubic-bezier(0.34,1.56,0.64,1)] text-gray-900 ${
+        heroLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+      }`}
+      style={{ transitionDelay: '700ms' }}>
+        , the Whole Nation{' '}
+      </span>
+      <span className={`inline-block transition-all duration-1000 ease-[cubic-bezier(0.34,1.56,0.64,1)] bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 bg-clip-text text-transparent font-extrabold animate-pulse ${
+        heroLoaded ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-90'
+      }`}
+      style={{ transitionDelay: '900ms' }}>
+        Grows.
+      </span>
     </h1>
 
     <p className={`text-base sm:text-lg lg:text-xl xl:text-2xl text-gray-700 mb-6 sm:mb-8 lg:mb-10 leading-relaxed px-2 sm:px-4 transition-all duration-1000 delay-500 ${
