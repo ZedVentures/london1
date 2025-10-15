@@ -4,10 +4,19 @@ import ContactForm from './components/ContactForm';
 import BusinessResults from './components/BusinessResults';
 import ValuationCalculator from './components/ValuationCalculator';
 import VIPIQuoteCard from './components/VIPIQuoteCard';
+import { useIntersectionObserver } from './components/AnimatedValue';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mooreMentumRef, isMooreMentumVisible] = useIntersectionObserver({
+    threshold: 0.3,
+    rootMargin: '-50px'
+  }, true);
+  const [allicaBankRef, isAllicaBankVisible] = useIntersectionObserver({
+    threshold: 0.3,
+    rootMargin: '-50px'
+  }, true);
   const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const totalSlides = 3;
@@ -770,11 +779,14 @@ function App() {
           {/* Partnership Cards */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto relative z-10">
             {/* MooreMentum Card */}
-            <a 
+            <a
+              ref={mooreMentumRef}
               href="https://mooreks.co.uk/services/business-growth-services/owner-managed-businesses/"
               target="_blank"
               rel="noopener noreferrer"
-              className="block bg-white/95 backdrop-blur-md p-8 rounded-3xl shadow-2xl border border-white/30 hover:shadow-2xl hover:bg-white hover:border-purple-200 transition-all duration-500 hover:scale-105 cursor-pointer group"
+              className={`block bg-white/95 backdrop-blur-md p-8 rounded-3xl shadow-2xl border border-white/30 hover:shadow-2xl hover:bg-white hover:border-purple-200 transition-all duration-1000 hover:scale-105 cursor-pointer group ${
+                isMooreMentumVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+              }`}
             >
               {/* Logo */}
               <div className="text-center mb-8">
@@ -806,11 +818,15 @@ function App() {
             </a>
 
             {/* Allica Bank Card */}
-            <a 
+            <a
+              ref={allicaBankRef}
               href="https://www.allica.bank/"
               target="_blank"
               rel="noopener noreferrer"
-              className="block bg-white/95 backdrop-blur-md p-8 rounded-3xl shadow-2xl border border-white/30 hover:shadow-2xl hover:bg-white hover:border-indigo-200 transition-all duration-500 hover:scale-105 cursor-pointer group"
+              className={`block bg-white/95 backdrop-blur-md p-8 rounded-3xl shadow-2xl border border-white/30 hover:shadow-2xl hover:bg-white hover:border-indigo-200 transition-all duration-1000 hover:scale-105 cursor-pointer group ${
+                isAllicaBankVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+              }`}
+              style={{ transitionDelay: '200ms' }}
             >
               {/* Logo */}
               <div className="text-center mb-8">
