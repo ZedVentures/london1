@@ -3,6 +3,7 @@ import { Menu, X, Shield, TrendingUp, Users, Award, CheckCircle, ArrowRight, Cal
 import ContactForm from './components/ContactForm';
 import BusinessResults from './components/BusinessResults';
 import ValuationCalculator from './components/ValuationCalculator';
+import VIPIQuoteCard from './components/VIPIQuoteCard';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -650,138 +651,42 @@ function App() {
                   <div className={`${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
                     {/* Quote for Vision stage only - placed above the visual card on right side */}
                     {index === 0 && (
-                      <div className="mb-8 bg-gradient-to-br from-purple-50 to-white p-6 rounded-xl border border-purple-200 shadow-lg relative overflow-hidden">
-                        {/* Decorative elements */}
-                        <div className="absolute top-0 right-0 w-16 h-16 bg-purple-100 rounded-full -translate-y-8 translate-x-8 opacity-50"></div>
-                        <div className="absolute bottom-0 left-0 w-12 h-12 bg-purple-200 rounded-full translate-y-6 -translate-x-6 opacity-30"></div>
-                        
-                        {/* Quote icon */}
-                        <div className="relative z-10">
-                          <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center mb-4 shadow-lg">
-                            <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
-                            </svg>
-                          </div>
-                          
-                          {/* Quote text */}
-                          <blockquote className="text-base font-medium text-gray-800 leading-relaxed mb-4 italic relative z-10">
-                            "This process has been life-changing. The vision we created has helped us deliver incredible growth beyond our expectations."
-                          </blockquote>
-                          
-                          {/* Attribution */}
-                          <div className="flex items-center space-x-3 relative z-10">
-                            <div className="w-8 h-8 bg-gradient-to-br from-purple-600 to-purple-700 rounded-full flex items-center justify-center">
-                              <Building className="w-4 h-4 text-white" />
-                            </div>
-                            <div>
-                              <div className="font-semibold text-gray-900 text-sm">Construction Business Owner</div>
-                              <div className="text-purple-600 text-xs font-medium">VIPI Programme Client</div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                      <VIPIQuoteCard
+                        quote="This process has been life-changing. The vision we created has helped us deliver incredible growth beyond our expectations."
+                        author="Construction Business Owner"
+                        role="VIPI Programme Client"
+                        colorScheme="purple"
+                      />
                     )}
 
                     {/* Quote for Productivity stage - placed above the visual card on right side */}
                     {index === 2 && (
-                      <div className="mb-8 bg-gradient-to-br from-green-50 to-white p-6 rounded-xl border border-green-200 shadow-lg relative overflow-hidden">
-                        {/* Decorative elements */}
-                        <div className="absolute top-0 right-0 w-16 h-16 bg-green-100 rounded-full -translate-y-8 translate-x-8 opacity-50"></div>
-                        <div className="absolute bottom-0 left-0 w-12 h-12 bg-green-200 rounded-full translate-y-6 -translate-x-6 opacity-30"></div>
-                        
-                        {/* Quote icon */}
-                        <div className="relative z-10">
-                          <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center mb-4 shadow-lg">
-                            <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
-                            </svg>
-                          </div>
-                          
-                          {/* Quote text */}
-                          <blockquote className="text-base font-medium text-gray-800 leading-relaxed mb-4 italic relative z-10">
-                            "The team supported us through challenging times. Their insight had a dramatic effect on improving our margins and profit."
-                          </blockquote>
-                          
-                          {/* Attribution */}
-                          <div className="flex items-center space-x-3 relative z-10">
-                            <div className="w-8 h-8 bg-gradient-to-br from-green-600 to-green-700 rounded-full flex items-center justify-center">
-                              <Building className="w-4 h-4 text-white" />
-                            </div>
-                            <div>
-                              <div className="font-semibold text-gray-900 text-sm">Agricultural Business Owner</div>
-                              <div className="text-green-600 text-xs font-medium">VIPI Programme Client</div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                      <VIPIQuoteCard
+                        quote="The team supported us through challenging times. Their insight had a dramatic effect on improving our margins and profit."
+                        author="Agricultural Business Owner"
+                        role="VIPI Programme Client"
+                        colorScheme="green"
+                      />
                     )}
 
                     {/* Quote for Insight stage - placed above the visual card on right side */}
                     {index === 1 && (
-                      <div className="mb-8 bg-gradient-to-br from-blue-50 to-white p-6 rounded-xl border border-blue-200 shadow-lg relative overflow-hidden">
-                        {/* Decorative elements */}
-                        <div className="absolute top-0 right-0 w-16 h-16 bg-blue-100 rounded-full -translate-y-8 translate-x-8 opacity-50"></div>
-                        <div className="absolute bottom-0 left-0 w-12 h-12 bg-blue-200 rounded-full translate-y-6 -translate-x-6 opacity-30"></div>
-                        
-                        {/* Quote icon */}
-                        <div className="relative z-10">
-                          <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center mb-4 shadow-lg">
-                            <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
-                            </svg>
-                          </div>
-                          
-                          {/* Quote text */}
-                          <blockquote className="text-base font-medium text-gray-800 leading-relaxed mb-4 italic relative z-10">
-                            "The VIPI programme gave us the support and insight needed to make better business decisions. We're now more confident than ever about our future after working with MooreMentum."
-                          </blockquote>
-                          
-                          {/* Attribution */}
-                          <div className="flex items-center space-x-3 relative z-10">
-                            <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-700 rounded-full flex items-center justify-center">
-                              <Building className="w-4 h-4 text-white" />
-                            </div>
-                            <div>
-                              <div className="font-semibold text-gray-900 text-sm">Agricultural Business Owner</div>
-                              <div className="text-blue-600 text-xs font-medium">VIPI Programme Client</div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                      <VIPIQuoteCard
+                        quote="The VIPI programme gave us the support and insight needed to make better business decisions. We're now more confident than ever about our future after working with MooreMentum."
+                        author="Agricultural Business Owner"
+                        role="VIPI Programme Client"
+                        colorScheme="blue"
+                      />
                     )}
 
                     {/* Quote for Innovation stage - placed above the visual card on right side */}
                     {index === 3 && (
-                      <div className="mb-8 bg-gradient-to-br from-indigo-50 to-white p-6 rounded-xl border border-indigo-200 shadow-lg relative overflow-hidden">
-                        {/* Decorative elements */}
-                        <div className="absolute top-0 right-0 w-16 h-16 bg-indigo-100 rounded-full -translate-y-8 translate-x-8 opacity-50"></div>
-                        <div className="absolute bottom-0 left-0 w-12 h-12 bg-indigo-200 rounded-full translate-y-6 -translate-x-6 opacity-30"></div>
-                        
-                        {/* Quote icon */}
-                        <div className="relative z-10">
-                          <div className="w-8 h-8 bg-indigo-600 rounded-full flex items-center justify-center mb-4 shadow-lg">
-                            <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
-                            </svg>
-                          </div>
-                          
-                          {/* Quote text */}
-                          <blockquote className="text-base font-medium text-gray-800 leading-relaxed mb-4 italic relative z-10">
-                            "The VIPI Growth Programme is transformative with outstanding results. We'd highly recommend it to every entrepreneurial owner-manager."
-                          </blockquote>
-                          
-                          {/* Attribution */}
-                          <div className="flex items-center space-x-3 relative z-10">
-                            <div className="w-8 h-8 bg-gradient-to-br from-indigo-600 to-indigo-700 rounded-full flex items-center justify-center">
-                              <Building className="w-4 h-4 text-white" />
-                            </div>
-                            <div>
-                              <div className="font-semibold text-gray-900 text-sm">Tony Hill, Eden Facades</div>
-                              <div className="text-indigo-600 text-xs font-medium">VIPI Programme Client</div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                      <VIPIQuoteCard
+                        quote="The VIPI Growth Programme is transformative with outstanding results. We'd highly recommend it to every entrepreneurial owner-manager."
+                        author="Tony Hill, Eden Facades"
+                        role="VIPI Programme Client"
+                        colorScheme="indigo"
+                      />
                     )}
 
                     <div className={`relative p-12 rounded-3xl bg-gradient-to-br ${stage.color} text-white shadow-2xl transform hover:scale-105 transition-all duration-500`}>
