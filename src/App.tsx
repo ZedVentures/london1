@@ -325,8 +325,7 @@ function App() {
     <h1 className={`text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black mb-4 sm:mb-6 lg:mb-8 px-1 sm:px-2 transition-all duration-1000 delay-300 ${
       heroLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
     }`}>
-      <span className="text-black">Growth advice starts with one question:</span>
-      <span className="block text-purple-800 mt-2">What is possible?</span>
+      <span className="text-black">When UK Businesses Thrive, the Whole Nation Grows.</span>
     </h1>
 
     <p className={`text-base sm:text-lg lg:text-xl xl:text-2xl text-gray-700 mb-6 sm:mb-8 lg:mb-10 leading-relaxed px-2 sm:px-4 transition-all duration-1000 delay-500 ${
