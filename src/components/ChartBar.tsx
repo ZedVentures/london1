@@ -58,12 +58,12 @@ const ChartBar: React.FC<ChartBarProps> = ({
   return (
     <div
       ref={barRef}
-      className={`flex flex-col items-center flex-shrink-0 min-w-[60px] sm:min-w-[70px] md:min-w-[80px] lg:min-w-0 lg:flex-1 transition-all duration-1000 ${
+      className={`flex flex-col items-center flex-1 transition-all duration-1000 ${
         shouldAnimate ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
       style={{ transitionDelay: `${animationDelay}ms` }}
     >
-      <div className="relative flex flex-col items-center justify-end h-32 sm:h-40 md:h-48 lg:h-56 w-full min-w-[50px]">
+      <div className="relative flex flex-col items-center justify-end h-32 sm:h-40 md:h-48 lg:h-56 w-full">
         <div 
           className={`w-full rounded-t-lg transition-all duration-1500 ${
             isFirstBar ? 'bg-gray-400' : 

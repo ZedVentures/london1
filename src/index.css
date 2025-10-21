@@ -499,23 +499,4 @@ body, html {
       transform: translateY(0);
     }
   }
-
-  /* Custom scrollbar for mobile chart containers */
-  .overflow-x-auto::-webkit-scrollbar {
-    height: 6px;
-  }
-
-  .overflow-x-auto::-webkit-scrollbar-track {
-    background: #f3f4f6;
-    border-radius: 10px;
-  }
-
-  .overflow-x-auto::-webkit-scrollbar-thumb {
-    background: #d8b4fe;
-    border-radius: 10px;
-  }
-
-  .overflow-x-auto::-webkit-scrollbar-thumb:hover {
-    background: #c084fc;
-  }
 }
