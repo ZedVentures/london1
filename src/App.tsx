@@ -491,8 +491,8 @@ function App() {
             </div>
 
             {/* Right Side - Visual & CTA */}
-            <div className="text-center">
-              <div className="bg-gradient-to-br from-white/20 to-white/10 backdrop-blur-sm p-12 rounded-3xl border border-white/20 shadow-2xl">
+            <div className={`text-center transition-all duration-700 ${metricsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: '400ms' }}>
+              <div className="bg-gradient-to-br from-white/20 to-white/10 backdrop-blur-sm p-6 sm:p-8 lg:p-12 rounded-3xl border border-white/20 shadow-2xl hover:scale-105 transition-transform duration-500">
                 <div className="w-24 h-24 bg-purple-200 rounded-full flex items-center justify-center mx-auto mb-8">
                   <Building className="w-12 h-12 text-purple-800" />
                 </div>
@@ -674,12 +674,12 @@ function App() {
             {vipiStages.map((stage, index) => (
               <div key={index} className="relative">
 
-                <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
+                <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center ${
                   index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
                 }`}>
                   {/* Content */}
                   <div className={`${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
-                    <div className="mb-6 bg-white/95 backdrop-blur-sm p-8 rounded-2xl border border-white/20 shadow-2xl">
+                    <div className={`mb-6 bg-white/95 backdrop-blur-sm p-6 sm:p-8 rounded-2xl border border-white/20 shadow-2xl transition-all duration-700 hover:shadow-3xl hover:scale-[1.02] ${vipiVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: `${index * 200}ms` }}>
                       <span className="inline-block px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm font-semibold mb-4">
                         {stage.stage}
                       </span>
@@ -845,7 +845,7 @@ function App() {
               href="https://mooreks.co.uk/services/business-growth-services/owner-managed-businesses/"
               target="_blank"
               rel="noopener noreferrer"
-              className={`block bg-white/95 backdrop-blur-md p-8 rounded-3xl shadow-2xl border border-white/30 hover:shadow-2xl hover:bg-white hover:border-purple-200 transition-all duration-1000 hover:scale-105 cursor-pointer group ${
+              className={`block bg-white/95 backdrop-blur-md p-6 sm:p-8 rounded-3xl shadow-2xl border border-white/30 hover:shadow-2xl hover:bg-white hover:border-purple-200 transition-all duration-1000 hover:scale-105 cursor-pointer group ${
                 isMooreMentumVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
               }`}
             >
@@ -884,7 +884,7 @@ function App() {
               href="https://www.allica.bank/"
               target="_blank"
               rel="noopener noreferrer"
-              className={`block bg-white/95 backdrop-blur-md p-8 rounded-3xl shadow-2xl border border-white/30 hover:shadow-2xl hover:bg-white hover:border-indigo-200 transition-all duration-1000 hover:scale-105 cursor-pointer group ${
+              className={`block bg-white/95 backdrop-blur-md p-6 sm:p-8 rounded-3xl shadow-2xl border border-white/30 hover:shadow-2xl hover:bg-white hover:border-indigo-200 transition-all duration-1000 hover:scale-105 cursor-pointer group ${
                 isAllicaBankVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
               }`}
               style={{ transitionDelay: '200ms' }}

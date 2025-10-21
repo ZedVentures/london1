@@ -17,6 +17,9 @@ export const useScrollAnimation = (options: UseScrollAnimationOptions = {}) => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const isMobile = window.innerWidth < 768;
+    const adjustedThreshold = isMobile ? Math.max(0.05, threshold * 0.5) : threshold;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -29,7 +32,7 @@ export const useScrollAnimation = (options: UseScrollAnimationOptions = {}) => {
         }
       },
       {
-        threshold,
+        threshold: adjustedThreshold,
         rootMargin,
       }
     );
