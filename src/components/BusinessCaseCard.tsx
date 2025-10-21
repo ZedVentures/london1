@@ -155,9 +155,13 @@ const BusinessCaseCard: React.FC<BusinessCaseCardProps> = ({
 
           {/* Growth Chart */}
           <div className="bg-gray-50 p-3 sm:p-4 lg:p-6 rounded-xl sm:rounded-2xl">
+            {/* Mobile scroll hint */}
+            <div className="block sm:hidden text-center mb-2">
+              <span className="text-xs text-gray-500 italic">← Swipe to see all years →</span>
+            </div>
             {/* Bar Chart */}
             <div className="mb-3 sm:mb-4 lg:mb-6">
-              <div className="flex items-end justify-between h-40 sm:h-48 md:h-56 lg:h-72 bg-white p-2 sm:p-3 lg:p-4 rounded-xl border-2 border-gray-100 overflow-hidden">
+              <div className="flex items-end justify-evenly gap-1 sm:gap-2 h-40 sm:h-48 md:h-56 lg:h-72 bg-white p-2 sm:p-3 lg:p-4 rounded-xl border-2 border-gray-100 overflow-x-auto overflow-y-visible scrollbar-thin scrollbar-thumb-purple-300 scrollbar-track-gray-100">
                 {business.growthTrajectory.map((data, idx) => {
                   const parseValue = (val: string) => {
                     const numStr = val.replace('£', '');
