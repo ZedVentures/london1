@@ -5,6 +5,7 @@ import BusinessResults from './components/BusinessResults';
 import ValuationCalculator from './components/ValuationCalculator';
 import VIPIQuoteCard from './components/VIPIQuoteCard';
 import { useIntersectionObserver } from './components/AnimatedValue';
+import { useScrollAnimation } from './hooks/useScrollAnimation';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,6 +22,15 @@ function App() {
   const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const totalSlides = 3;
+
+  const [metricsRef, metricsVisible] = useScrollAnimation({ threshold: 0.2 });
+  const [servicesRef, servicesVisible] = useScrollAnimation({ threshold: 0.15 });
+  const [vipiRef, vipiVisible] = useScrollAnimation({ threshold: 0.1 });
+  const [caseStudiesRef, caseStudiesVisible] = useScrollAnimation({ threshold: 0.1 });
+  const [testimonialsRef, testimonialsVisible] = useScrollAnimation({ threshold: 0.2 });
+  const [partnershipsRef, partnershipsVisible] = useScrollAnimation({ threshold: 0.2 });
+  const [faqRef, faqVisible] = useScrollAnimation({ threshold: 0.2 });
+  const [ctaRef, ctaVisible] = useScrollAnimation({ threshold: 0.3 });
 
   // Auto-advance slides
   useEffect(() => {
@@ -255,7 +265,7 @@ function App() {
               }`}>Contact</a>
               <button
                 onClick={() => setIsCalculatorOpen(true)}
-                className="bg-purple-800 hover:bg-purple-900 text-white px-6 py-2.5 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg whitespace-nowrap"
+                className="bg-purple-800 hover:bg-purple-900 text-white px-6 py-2.5 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:-translate-y-1 whitespace-nowrap animate-pulse-slow"
               >
                 Valuation Calculator
               </button>
@@ -272,17 +282,17 @@ function App() {
             </button>
           </div>
 
-          <div className={`md:hidden transition-all duration-300 overflow-hidden bg-white/95 backdrop-blur-md rounded-lg mx-4 ${
-            isMenuOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'
+          <div className={`md:hidden transition-all duration-500 overflow-hidden bg-white/95 backdrop-blur-md rounded-lg mx-4 shadow-xl ${
+            isMenuOpen ? 'max-h-80 opacity-100 translate-y-0' : 'max-h-0 opacity-0 -translate-y-4'
           }`}>
             <div className="py-4 space-y-3 px-4">
-              <a href="#vipi" className="block text-gray-600 hover:text-purple-800 transition-colors duration-300 py-2">VIPI Programme</a>
-              <a href="#partnerships" className="block text-gray-600 hover:text-purple-800 transition-colors duration-300 py-2">Partnerships</a>
-              <a href="#success-stories" className="block text-gray-600 hover:text-purple-800 transition-colors duration-300 py-2">Results</a>
-              <a href="#contact" className="block text-gray-600 hover:text-purple-800 transition-colors duration-300 py-2">Contact</a>
-              <button 
+              <a href="#vipi" className="block text-gray-600 hover:text-purple-800 hover:translate-x-2 transition-all duration-300 py-2">VIPI Programme</a>
+              <a href="#partnerships" className="block text-gray-600 hover:text-purple-800 hover:translate-x-2 transition-all duration-300 py-2">Partnerships</a>
+              <a href="#success-stories" className="block text-gray-600 hover:text-purple-800 hover:translate-x-2 transition-all duration-300 py-2">Results</a>
+              <a href="#contact" className="block text-gray-600 hover:text-purple-800 hover:translate-x-2 transition-all duration-300 py-2">Contact</a>
+              <button
                 onClick={() => setIsCalculatorOpen(true)}
-                className="w-full bg-purple-800 hover:bg-purple-900 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300"
+                className="w-full bg-purple-800 hover:bg-purple-900 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
               >
                 Valuation Calculator
               </button>
@@ -411,19 +421,19 @@ function App() {
 
 
       {/* Who We Work With Section */}
-      <section className="py-24 bg-gradient-to-br from-purple-900 via-purple-800 to-indigo-900 text-white relative overflow-hidden">
+      <section ref={metricsRef} className="py-24 bg-gradient-to-br from-purple-900 via-purple-800 to-indigo-900 text-white relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full -translate-x-48 -translate-y-48"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full translate-x-48 translate-y-48"></div>
+          <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full -translate-x-48 -translate-y-48 animate-float"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full translate-x-48 translate-y-48 animate-float" style={{ animationDelay: '1s' }}></div>
         </div>
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+          <div className={`text-center mb-20 transition-all duration-1000 ${metricsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight animate-fadeInDown">
               Who We Work With
             </h2>
-            <p className="text-xl text-purple-100 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-purple-100 max-w-3xl mx-auto leading-relaxed animate-fadeInUp animation-delay-200">
               We partner with ambitious UK business owners who share three key characteristics
             </p>
           </div>
@@ -431,48 +441,48 @@ function App() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Left Side - Characteristics */}
             <div className="space-y-8">
-              <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20">
+              <div className={`bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20 transition-all duration-700 hover:scale-105 hover:bg-white/20 hover:shadow-2xl ${metricsVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`} style={{ transitionDelay: '200ms' }}>
                 <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-purple-200 rounded-full flex items-center justify-center">
+                  <div className="flex-shrink-0 w-12 h-12 bg-purple-200 rounded-full flex items-center justify-center animate-pulse-slow">
                     <TrendingUp className="w-6 h-6 text-purple-800" />
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-white mb-3">Real Aspiration for Growth</h3>
                     <p className="text-purple-100 leading-relaxed">
-                      You're not just maintaining the status quo. You have genuine ambitions to scale your business, 
-                      increase profitability, and create lasting value. Growth isn't just a nice-to-have—it's essential 
+                      You're not just maintaining the status quo. You have genuine ambitions to scale your business,
+                      increase profitability, and create lasting value. Growth isn't just a nice-to-have—it's essential
                       to your vision.
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20">
+              <div className={`bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20 transition-all duration-700 hover:scale-105 hover:bg-white/20 hover:shadow-2xl ${metricsVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`} style={{ transitionDelay: '400ms' }}>
                 <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-purple-200 rounded-full flex items-center justify-center">
+                  <div className="flex-shrink-0 w-12 h-12 bg-purple-200 rounded-full flex items-center justify-center animate-pulse-slow" style={{ animationDelay: '0.5s' }}>
                     <Users className="w-6 h-6 text-purple-800" />
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-white mb-3">Willing to Engage & Be Honest</h3>
                     <p className="text-purple-100 leading-relaxed">
-                      Success requires transparency. You're ready to have open conversations about your challenges, 
-                      share your financial realities, and work collaboratively with our team. No hidden agendas—just 
+                      Success requires transparency. You're ready to have open conversations about your challenges,
+                      share your financial realities, and work collaboratively with our team. No hidden agendas—just
                       honest partnership.
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20">
+              <div className={`bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20 transition-all duration-700 hover:scale-105 hover:bg-white/20 hover:shadow-2xl ${metricsVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`} style={{ transitionDelay: '600ms' }}>
                 <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-purple-200 rounded-full flex items-center justify-center">
+                  <div className="flex-shrink-0 w-12 h-12 bg-purple-200 rounded-full flex items-center justify-center animate-pulse-slow" style={{ animationDelay: '1s' }}>
                     <Building className="w-6 h-6 text-purple-800" />
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-white mb-3">Any Sector, UK-Based</h3>
                     <p className="text-purple-100 leading-relaxed">
-                      Whether you're in technology, manufacturing, retail, professional services, or any other sector, 
-                      our VIPI framework adapts to your industry. We work with UK businesses of all types who are 
+                      Whether you're in technology, manufacturing, retail, professional services, or any other sector,
+                      our VIPI framework adapts to your industry. We work with UK businesses of all types who are
                       serious about growth.
                     </p>
                   </div>
@@ -614,45 +624,45 @@ function App() {
       </section>
 
       {/* VIPI Programme Overview */}
-      <section id="vipi" className="py-24 bg-gradient-to-br from-purple-900 via-purple-800 to-indigo-900 relative overflow-hidden">
+      <section id="vipi" ref={vipiRef} className="py-24 bg-gradient-to-br from-purple-900 via-purple-800 to-indigo-900 relative overflow-hidden">
         {/* Enhanced Animated Background Elements */}
         <div className="absolute inset-0">
           {/* Background Pattern */}
           <div className="absolute inset-0 opacity-20">
-            <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full -translate-x-48 -translate-y-48 animate-pulse"></div>
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full translate-x-48 translate-y-48 animate-pulse"></div>
-            <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-purple-300 rounded-full -translate-y-32 animate-bounce"></div>
-            <div className="absolute top-1/3 right-1/4 w-48 h-48 bg-indigo-300 rounded-full animate-pulse"></div>
-            <div className="absolute bottom-1/4 left-1/3 w-32 h-32 bg-purple-400 rounded-full animate-pulse"></div>
-            <div className="absolute top-3/4 right-1/3 w-40 h-40 bg-indigo-400 rounded-full animate-bounce"></div>
+            <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full -translate-x-48 -translate-y-48 animate-float"></div>
+            <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full translate-x-48 translate-y-48 animate-float" style={{ animationDelay: '1s' }}></div>
+            <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-purple-300 rounded-full -translate-y-32 animate-float" style={{ animationDelay: '0.5s' }}></div>
+            <div className="absolute top-1/3 right-1/4 w-48 h-48 bg-indigo-300 rounded-full animate-float" style={{ animationDelay: '1.5s' }}></div>
+            <div className="absolute bottom-1/4 left-1/3 w-32 h-32 bg-purple-400 rounded-full animate-float" style={{ animationDelay: '2s' }}></div>
+            <div className="absolute top-3/4 right-1/3 w-40 h-40 bg-indigo-400 rounded-full animate-float" style={{ animationDelay: '0.75s' }}></div>
           </div>
           {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-br from-purple-900/80 via-purple-800/60 to-indigo-900/80"></div>
         </div>
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20 relative z-10">
+          <div className={`text-center mb-20 relative z-10 transition-all duration-1000 ${vipiVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
               The <span className="bg-gradient-to-r from-white to-purple-100 bg-clip-text text-transparent">VIPI</span> Programme
             </h2>
             <p className="text-xl md:text-2xl text-purple-100 max-w-4xl mx-auto leading-relaxed mb-12">
              A proven, systematic approach to business transformation that has delivered exceptional results for businesses across the UK.
             </p>
-            
+
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mb-16">
-              <div className="text-center p-4 bg-white/20 backdrop-blur-sm rounded-xl border border-white/30 hover:bg-white/30 transition-all duration-500">
+              <div className={`text-center p-4 bg-white/20 backdrop-blur-sm rounded-xl border border-white/30 hover:bg-white/30 hover:scale-110 transition-all duration-500 ${vipiVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`} style={{ transitionDelay: '200ms' }}>
                 <div className="text-3xl font-bold text-white mb-2">V</div>
                 <div className="text-sm font-semibold text-purple-100">Vision</div>
               </div>
-              <div className="text-center p-4 bg-white/20 backdrop-blur-sm rounded-xl border border-white/30 hover:bg-white/30 transition-all duration-500">
+              <div className={`text-center p-4 bg-white/20 backdrop-blur-sm rounded-xl border border-white/30 hover:bg-white/30 hover:scale-110 transition-all duration-500 ${vipiVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`} style={{ transitionDelay: '400ms' }}>
                 <div className="text-3xl font-bold text-white mb-2">I</div>
                 <div className="text-sm font-semibold text-purple-100">Insight</div>
               </div>
-              <div className="text-center p-4 bg-white/20 backdrop-blur-sm rounded-xl border border-white/30 hover:bg-white/30 transition-all duration-500">
+              <div className={`text-center p-4 bg-white/20 backdrop-blur-sm rounded-xl border border-white/30 hover:bg-white/30 hover:scale-110 transition-all duration-500 ${vipiVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`} style={{ transitionDelay: '600ms' }}>
                 <div className="text-3xl font-bold text-white mb-2">P</div>
                 <div className="text-sm font-semibold text-purple-100">Productivity</div>
               </div>
-              <div className="text-center p-4 bg-white/20 backdrop-blur-sm rounded-xl border border-white/30 hover:bg-white/30 transition-all duration-500">
+              <div className={`text-center p-4 bg-white/20 backdrop-blur-sm rounded-xl border border-white/30 hover:bg-white/30 hover:scale-110 transition-all duration-500 ${vipiVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`} style={{ transitionDelay: '800ms' }}>
                 <div className="text-3xl font-bold text-white mb-2">I</div>
                 <div className="text-sm font-semibold text-purple-100">Innovation</div>
               </div>
@@ -802,23 +812,23 @@ function App() {
 
 
       {/* Partnership Section */}
-      <section id="partnerships" className="py-24 bg-gradient-to-br from-purple-900 via-purple-800 to-indigo-900 relative overflow-hidden">
+      <section id="partnerships" ref={partnershipsRef} className="py-24 bg-gradient-to-br from-purple-900 via-purple-800 to-indigo-900 relative overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0">
           {/* Enhanced Background Pattern */}
           <div className="absolute inset-0 opacity-20">
-            <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full -translate-x-48 -translate-y-48 animate-pulse"></div>
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full translate-x-48 translate-y-48 animate-pulse"></div>
-            <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-purple-300 rounded-full -translate-y-32 animate-bounce"></div>
-            <div className="absolute top-1/3 right-1/4 w-48 h-48 bg-indigo-300 rounded-full animate-pulse"></div>
+            <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full -translate-x-48 -translate-y-48 animate-float"></div>
+            <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full translate-x-48 translate-y-48 animate-float" style={{ animationDelay: '1s' }}></div>
+            <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-purple-300 rounded-full -translate-y-32 animate-float" style={{ animationDelay: '0.5s' }}></div>
+            <div className="absolute top-1/3 right-1/4 w-48 h-48 bg-indigo-300 rounded-full animate-float" style={{ animationDelay: '1.5s' }}></div>
           </div>
           {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-br from-purple-900/80 via-purple-800/60 to-indigo-900/80"></div>
         </div>
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
-          <div className="text-center mb-16 relative z-10">
+          <div className={`text-center mb-16 relative z-10 transition-all duration-1000 ${partnershipsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
               In Partnership With
             </h2>

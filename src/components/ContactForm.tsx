@@ -1,6 +1,7 @@
 import React from 'react';
 import { Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 import { useContactForm } from '../hooks/useContactForm';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const ContactForm: React.FC = () => {
   const {
@@ -12,10 +13,12 @@ const ContactForm: React.FC = () => {
     handleSubmit
   } = useContactForm();
 
+  const [contactRef, contactVisible] = useScrollAnimation({ threshold: 0.2 });
+
   return (
-    <section id="contact" className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-indigo-900 via-purple-900 to-violet-800">
+    <section id="contact" ref={contactRef} className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-indigo-900 via-purple-900 to-violet-800">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-8 sm:mb-12">
+        <div className={`text-center mb-8 sm:mb-12 transition-all duration-1000 ${contactVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6 px-2">
             Ready to Transform Your Business?
           </h2>
@@ -24,7 +27,7 @@ const ContactForm: React.FC = () => {
           </p>
         </div>
 
-        <div className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-6 sm:p-8 md:p-12">
+        <div className={`bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-6 sm:p-8 md:p-12 transition-all duration-1000 ${contactVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`} style={{ transitionDelay: '200ms' }}>
           <form 
             onSubmit={handleSubmit}
             className="space-y-4 sm:space-y-6"
@@ -56,7 +59,7 @@ const ContactForm: React.FC = () => {
                   id="name"
                   value={formData.name}
                   onChange={(e) => handleInputChange('name', e.target.value)}
-                  className="w-full px-3 sm:px-4 py-3 sm:py-3 border-2 border-gray-200 rounded-xl focus:border-purple-600 focus:ring-2 focus:ring-purple-100 transition-all duration-300 text-base sm:text-base font-medium text-gray-800 min-h-[44px]"
+                  className="w-full px-3 sm:px-4 py-3 sm:py-3 border-2 border-gray-200 rounded-xl focus:border-purple-600 focus:ring-2 focus:ring-purple-100 hover:border-gray-300 hover:shadow-md transition-all duration-300 text-base sm:text-base font-medium text-gray-800 min-h-[44px]"
                   placeholder="Your full name"
                   autoComplete="name"
                   required
@@ -213,7 +216,7 @@ const ContactForm: React.FC = () => {
                 className={`w-full sm:w-auto inline-flex items-center justify-center space-x-2 sm:space-x-3 px-6 sm:px-8 py-4 sm:py-4 rounded-xl font-semibold text-base sm:text-lg transition-all duration-300 min-h-[44px] ${
                   isSubmitting
                     ? 'bg-gray-400 cursor-not-allowed font-bold'
-                    : 'bg-purple-800 hover:bg-purple-900 hover:scale-105 hover:shadow-lg font-bold'
+                    : 'bg-purple-800 hover:bg-purple-900 hover:scale-105 hover:shadow-2xl hover:-translate-y-1 font-bold'
                 } text-white`}
               >
                 {isSubmitting ? (
