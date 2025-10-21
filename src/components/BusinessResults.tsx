@@ -197,6 +197,7 @@ const ChartBar: React.FC<ChartBarProps> = ({
 
 const BusinessResults: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [autoScrollEnabled, setAutoScrollEnabled] = useState(true);
   const [sectionRef, isSectionVisible] = useIntersectionObserver({
     threshold: 0.1,
     rootMargin: '-100px'
@@ -207,24 +208,27 @@ const BusinessResults: React.FC = () => {
   }, true);
 
   useEffect(() => {
-    if (isSectionVisible) {
+    if (isSectionVisible && autoScrollEnabled) {
       const interval = setInterval(() => {
         setCurrentSlide((prev) => (prev + 1) % businessCases.length);
       }, 5000);
 
       return () => clearInterval(interval);
     }
-  }, [isSectionVisible]);
+  }, [isSectionVisible, autoScrollEnabled]);
 
   const nextSlide = () => {
+    setAutoScrollEnabled(false);
     setCurrentSlide((prev) => (prev + 1) % businessCases.length);
   };
 
   const prevSlide = () => {
+    setAutoScrollEnabled(false);
     setCurrentSlide((prev) => (prev - 1 + businessCases.length) % businessCases.length);
   };
 
   const goToSlide = (index: number) => {
+    setAutoScrollEnabled(false);
     setCurrentSlide(index);
   };
 
