@@ -349,7 +349,7 @@ function App() {
           heroLoaded ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-90'
         }`}
         style={{ transitionDelay: '400ms' }}>
-          Potential{' '}
+          Your Business Potential{' '}
         </span>
         <span className={`transition-all duration-800 ease-[cubic-bezier(0.34,1.56,0.64,1)] text-gray-900 ${
           heroLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
