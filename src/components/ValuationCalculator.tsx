@@ -132,10 +132,8 @@ const ValuationCalculator: React.FC<ValuationCalculatorProps> = ({ isOpen, onClo
   const [ebitda, setEbitda] = useState('');
   const [assets, setAssets] = useState('');
   const [liabilities, setLiabilities] = useState('');
-  const [customMicro, setCustomMicro] = useState('');
-  const [customSmall, setCustomSmall] = useState('');
-  const [customBaseline, setCustomBaseline] = useState('');
-  const [customUpperMid, setCustomUpperMid] = useState('');
+  const [customCurrentMultiple, setCustomCurrentMultiple] = useState('');
+  const [customImprovedMultiple, setCustomImprovedMultiple] = useState('');
   const [valuation, setValuation] = useState(0);
   const [multiple, setMultiple] = useState(0);
   const [businessSize, setBusinessSize] = useState('');
@@ -183,13 +181,7 @@ const ValuationCalculator: React.FC<ValuationCalculatorProps> = ({ isOpen, onClo
 
     let multiples;
     if (useCustomMultiples) {
-      // Use custom multiples if provided, otherwise use defaults
-      multiples = {
-        micro: customMicro ? parseFloat(customMicro) : 3.0,
-        small: customSmall ? parseFloat(customSmall) : 4.0,
-        baseline: customBaseline ? parseFloat(customBaseline) : 5.0,
-        upperMid: customUpperMid ? parseFloat(customUpperMid) : 6.0
-      };
+      multiples = sectorMultiples['Technology']; // Use any sector for size calculation
     } else {
       multiples = sectorMultiples[sector as keyof typeof sectorMultiples];
     }
@@ -198,24 +190,38 @@ const ValuationCalculator: React.FC<ValuationCalculatorProps> = ({ isOpen, onClo
     const assetsValue = assets ? parseFloat(assets) : 0;
     const liabilitiesValue = liabilities ? parseFloat(liabilities) : 0;
     const netAssets = assetsValue - liabilitiesValue;
-    
+
     // Current valuation
-    const current = calculateMultiple(ebitdaValue, multiples);
-    setMultiple(current.multiple);
-    setBusinessSize(current.businessSize);
-    setValuation(ebitdaValue * current.multiple + (netAssets / 1000));
+    if (useCustomMultiples && customCurrentMultiple) {
+      const customMultipleValue = parseFloat(customCurrentMultiple);
+      setMultiple(customMultipleValue);
+      setBusinessSize('Custom Multiple');
+      setValuation(ebitdaValue * customMultipleValue + (netAssets / 1000));
+    } else {
+      const current = calculateMultiple(ebitdaValue, multiples);
+      setMultiple(current.multiple);
+      setBusinessSize(current.businessSize);
+      setValuation(ebitdaValue * current.multiple + (netAssets / 1000));
+    }
 
     // Improved valuation (3x EBITDA improvement)
     const improvedEbitda = ebitdaValue * 3;
-    const improved = calculateMultiple(improvedEbitda, multiples);
-    setImprovedMultiple(improved.multiple);
-    setImprovedBusinessSize(improved.businessSize);
-    setImprovedValuation(improvedEbitda * improved.multiple + (netAssets / 1000));
+    if (useCustomMultiples && customImprovedMultiple) {
+      const customImprovedMultipleValue = parseFloat(customImprovedMultiple);
+      setImprovedMultiple(customImprovedMultipleValue);
+      setImprovedBusinessSize('Custom Multiple');
+      setImprovedValuation(improvedEbitda * customImprovedMultipleValue + (netAssets / 1000));
+    } else {
+      const improved = calculateMultiple(improvedEbitda, multiples);
+      setImprovedMultiple(improved.multiple);
+      setImprovedBusinessSize(improved.businessSize);
+      setImprovedValuation(improvedEbitda * improved.multiple + (netAssets / 1000));
+    }
   };
 
   useEffect(() => {
     calculateValuation();
-  }, [sector, ebitda, assets, liabilities, useCustomMultiples, customMicro, customSmall, customBaseline, customUpperMid]);
+  }, [sector, ebitda, assets, liabilities, useCustomMultiples, customCurrentMultiple, customImprovedMultiple]);
 
   const formatCurrency = (value: number) => {
     if (value >= 1000) {
@@ -394,77 +400,30 @@ const ValuationCalculator: React.FC<ValuationCalculatorProps> = ({ isOpen, onClo
             </div>
           </div>
 
-          {/* Custom Multiples Inputs - Only show when toggle is on */}
+          {/* Custom Multiple Input - Only show when toggle is on */}
           {useCustomMultiples && (
-            <div className="bg-white p-4 sm:p-6 rounded-xl border-2 border-purple-200 space-y-4">
+            <div className="bg-white p-4 sm:p-6 rounded-xl border-2 border-purple-200">
               <div className="flex items-center space-x-2 mb-4">
                 <Target className="w-5 h-5 text-purple-600" />
-                <h3 className="text-lg font-bold text-gray-800">Custom EBITDA Multiples</h3>
-                <Tooltip content="Enter your own valuation multiples for each business size category. These will be used instead of the standard sector multiples. Leave blank to use default values.">
+                <h3 className="text-lg font-bold text-gray-800">Current EBITDA Multiple</h3>
+                <Tooltip content="Enter your current valuation multiple. This will be applied to your EBITDA to calculate your current business valuation.">
                   <HelpCircle className="w-4 h-4 text-gray-400 hover:text-purple-600 cursor-help" />
                 </Tooltip>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Micro Business Multiple (£0-200K EBITDA)
-                  </label>
-                  <input
-                    type="number"
-                    value={customMicro}
-                    onChange={(e) => setCustomMicro(e.target.value)}
-                    placeholder="e.g., 3.5"
-                    step="0.1"
-                    min="0"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-600 focus:ring-2 focus:ring-purple-100 transition-all duration-300 text-base min-h-[44px]"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Small Business Multiple (£200K-1M EBITDA)
-                  </label>
-                  <input
-                    type="number"
-                    value={customSmall}
-                    onChange={(e) => setCustomSmall(e.target.value)}
-                    placeholder="e.g., 5.0"
-                    step="0.1"
-                    min="0"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-600 focus:ring-2 focus:ring-purple-100 transition-all duration-300 text-base min-h-[44px]"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Growing Business Multiple (£1M-5M EBITDA)
-                  </label>
-                  <input
-                    type="number"
-                    value={customBaseline}
-                    onChange={(e) => setCustomBaseline(e.target.value)}
-                    placeholder="e.g., 6.5"
-                    step="0.1"
-                    min="0"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-600 focus:ring-2 focus:ring-purple-100 transition-all duration-300 text-base min-h-[44px]"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Upper Mid-Market Multiple (£10M+ EBITDA)
-                  </label>
-                  <input
-                    type="number"
-                    value={customUpperMid}
-                    onChange={(e) => setCustomUpperMid(e.target.value)}
-                    placeholder="e.g., 8.0"
-                    step="0.1"
-                    min="0"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-600 focus:ring-2 focus:ring-purple-100 transition-all duration-300 text-base min-h-[44px]"
-                  />
-                </div>
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  Current Multiple *
+                </label>
+                <input
+                  type="number"
+                  value={customCurrentMultiple}
+                  onChange={(e) => setCustomCurrentMultiple(e.target.value)}
+                  placeholder="e.g., 5.5"
+                  step="0.1"
+                  min="0"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-600 focus:ring-2 focus:ring-purple-100 transition-all duration-300 text-base min-h-[44px]"
+                />
               </div>
             </div>
           )}
@@ -591,7 +550,7 @@ const ValuationCalculator: React.FC<ValuationCalculatorProps> = ({ isOpen, onClo
           </div>
 
           {/* Current Valuation Results */}
-          {((useCustomMultiples && ebitda) || (!useCustomMultiples && sector && ebitda)) && !isNaN(parseFloat(ebitda)) && parseFloat(ebitda) > 0 && (
+          {((useCustomMultiples && ebitda && customCurrentMultiple && customImprovedMultiple) || (!useCustomMultiples && sector && ebitda)) && !isNaN(parseFloat(ebitda)) && parseFloat(ebitda) > 0 && (
             <>
 
               <div className="bg-gradient-to-br from-purple-50 to-white p-4 sm:p-6 rounded-2xl border border-purple-100">
@@ -661,37 +620,34 @@ const ValuationCalculator: React.FC<ValuationCalculatorProps> = ({ isOpen, onClo
                   </Tooltip>
                 </div>
                 
-                {/* Simplified Multiple Scale for Current Valuation */}
-                <div className="mb-4 sm:mb-6">
-                  <div className="text-xs sm:text-sm text-gray-600 mb-2 sm:mb-3">
-                    {useCustomMultiples ? 'Multiple Range (Custom)' : `Multiple Range for ${sector}`}
-                  </div>
-                  <div className="relative h-6 bg-gradient-to-r from-red-200 via-yellow-200 via-green-200 to-blue-200 rounded-full">
-                    <div
-                      className="absolute top-0 w-4 sm:w-6 h-4 sm:h-6 bg-purple-600 rounded-full border-2 border-white shadow-lg transform -translate-x-2 sm:-translate-x-3 transition-all duration-700 flex items-center justify-center"
-                      style={{
-                        left: `${getMultiplePosition(parseFloat(ebitda) / 1000, useCustomMultiples ? {
-                          micro: customMicro ? parseFloat(customMicro) : 3.0,
-                          small: customSmall ? parseFloat(customSmall) : 4.0,
-                          baseline: customBaseline ? parseFloat(customBaseline) : 5.0,
-                          upperMid: customUpperMid ? parseFloat(customUpperMid) : 6.0
-                        } : sectorMultiples[sector as keyof typeof sectorMultiples])}%`
-                      }}
-                    >
-                      <div className="w-1 sm:w-2 h-1 sm:h-2 bg-white rounded-full"></div>
+                {/* Simplified Multiple Scale for Current Valuation - Only show when not using custom multiples */}
+                {!useCustomMultiples && (
+                  <div className="mb-4 sm:mb-6">
+                    <div className="text-xs sm:text-sm text-gray-600 mb-2 sm:mb-3">
+                      Multiple Range for {sector}
+                    </div>
+                    <div className="relative h-6 bg-gradient-to-r from-red-200 via-yellow-200 via-green-200 to-blue-200 rounded-full">
+                      <div
+                        className="absolute top-0 w-4 sm:w-6 h-4 sm:h-6 bg-purple-600 rounded-full border-2 border-white shadow-lg transform -translate-x-2 sm:-translate-x-3 transition-all duration-700 flex items-center justify-center"
+                        style={{
+                          left: `${getMultiplePosition(parseFloat(ebitda) / 1000, sectorMultiples[sector as keyof typeof sectorMultiples])}%`
+                        }}
+                      >
+                        <div className="w-1 sm:w-2 h-1 sm:h-2 bg-white rounded-full"></div>
+                      </div>
+                    </div>
+                    <div className="flex justify-between text-xs text-gray-500 mt-1 px-1">
+                      <span>Micro<br/>{sectorMultiples[sector as keyof typeof sectorMultiples]?.micro.toFixed(1)}x</span>
+                      <span>Small<br/>{sectorMultiples[sector as keyof typeof sectorMultiples]?.small.toFixed(1)}x</span>
+                      <span>Growing<br/>{sectorMultiples[sector as keyof typeof sectorMultiples]?.baseline.toFixed(1)}x</span>
+                      <span>Upper Mid<br/>{sectorMultiples[sector as keyof typeof sectorMultiples]?.upperMid.toFixed(1)}x</span>
+                    </div>
+                    <div className="text-center mt-2 text-xs sm:text-sm text-gray-600">
+                      Current Position: <span className="font-semibold text-purple-800">{businessSize}</span>
+                      ({multiple.toFixed(1)}x multiple)
                     </div>
                   </div>
-                  <div className="flex justify-between text-xs text-gray-500 mt-1 px-1">
-                    <span>Micro<br/>{useCustomMultiples ? (customMicro || '3.0') : sectorMultiples[sector as keyof typeof sectorMultiples]?.micro.toFixed(1)}x</span>
-                    <span>Small<br/>{useCustomMultiples ? (customSmall || '4.0') : sectorMultiples[sector as keyof typeof sectorMultiples]?.small.toFixed(1)}x</span>
-                    <span>Growing<br/>{useCustomMultiples ? (customBaseline || '5.0') : sectorMultiples[sector as keyof typeof sectorMultiples]?.baseline.toFixed(1)}x</span>
-                    <span>Upper Mid<br/>{useCustomMultiples ? (customUpperMid || '6.0') : sectorMultiples[sector as keyof typeof sectorMultiples]?.upperMid.toFixed(1)}x</span>
-                  </div>
-                  <div className="text-center mt-2 text-xs sm:text-sm text-gray-600">
-                    Current Position: <span className="font-semibold text-purple-800">{businessSize}</span>
-                    ({multiple.toFixed(1)}x multiple)
-                  </div>
-                </div>
+                )}
                 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-4 sm:mb-6">
                   <div className="text-center p-3 sm:p-4 bg-white rounded-xl shadow-sm">
@@ -765,36 +721,61 @@ const ValuationCalculator: React.FC<ValuationCalculatorProps> = ({ isOpen, onClo
                     </div>
                   </div>
                 </div>
-                
-                {/* Improved Multiple Scale */}
-                <div className="mb-4 sm:mb-6">
-                  <div className="text-xs sm:text-sm text-gray-600 mb-2 sm:mb-3">Improved Position After VIPI Programme</div>
-                  <div className="relative h-6 bg-gradient-to-r from-red-200 via-yellow-200 via-green-200 to-blue-200 rounded-full">
-                    <div
-                      className="absolute top-0 w-4 sm:w-6 h-4 sm:h-6 bg-green-600 rounded-full border-2 border-white shadow-lg transform -translate-x-2 sm:-translate-x-3 transition-all duration-700 flex items-center justify-center"
-                      style={{
-                        left: `${getMultiplePosition((parseFloat(ebitda) * 3) / 1000, useCustomMultiples ? {
-                          micro: customMicro ? parseFloat(customMicro) : 3.0,
-                          small: customSmall ? parseFloat(customSmall) : 4.0,
-                          baseline: customBaseline ? parseFloat(customBaseline) : 5.0,
-                          upperMid: customUpperMid ? parseFloat(customUpperMid) : 6.0
-                        } : sectorMultiples[sector as keyof typeof sectorMultiples])}%`
-                      }}
-                    >
-                      <div className="w-1 sm:w-2 h-1 sm:h-2 bg-white rounded-full"></div>
+
+                {/* Custom Improved Multiple Input - Only show when toggle is on */}
+                {useCustomMultiples && (
+                  <div className="mb-4 sm:mb-6 bg-white p-4 sm:p-6 rounded-xl border-2 border-green-200">
+                    <div className="flex items-center space-x-2 mb-4">
+                      <Zap className="w-5 h-5 text-green-600" />
+                      <h3 className="text-lg font-bold text-gray-800">Improved EBITDA Multiple</h3>
+                      <Tooltip content="Enter your projected improved valuation multiple. This will be applied to your improved EBITDA (3x current) to calculate your potential business valuation.">
+                        <HelpCircle className="w-4 h-4 text-gray-400 hover:text-green-600 cursor-help" />
+                      </Tooltip>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                        Improved Multiple *
+                      </label>
+                      <input
+                        type="number"
+                        value={customImprovedMultiple}
+                        onChange={(e) => setCustomImprovedMultiple(e.target.value)}
+                        placeholder="e.g., 7.0"
+                        step="0.1"
+                        min="0"
+                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-600 focus:ring-2 focus:ring-green-100 transition-all duration-300 text-base min-h-[44px]"
+                      />
                     </div>
                   </div>
-                  <div className="flex justify-between text-xs text-gray-500 mt-1 px-1">
-                    <span>Micro<br/>{useCustomMultiples ? (customMicro || '3.0') : sectorMultiples[sector as keyof typeof sectorMultiples]?.micro.toFixed(1)}x</span>
-                    <span>Small<br/>{useCustomMultiples ? (customSmall || '4.0') : sectorMultiples[sector as keyof typeof sectorMultiples]?.small.toFixed(1)}x</span>
-                    <span>Growing<br/>{useCustomMultiples ? (customBaseline || '5.0') : sectorMultiples[sector as keyof typeof sectorMultiples]?.baseline.toFixed(1)}x</span>
-                    <span>Upper Mid<br/>{useCustomMultiples ? (customUpperMid || '6.0') : sectorMultiples[sector as keyof typeof sectorMultiples]?.upperMid.toFixed(1)}x</span>
+                )}
+
+                {/* Improved Multiple Scale - Only show when not using custom multiples */}
+                {!useCustomMultiples && (
+                  <div className="mb-4 sm:mb-6">
+                    <div className="text-xs sm:text-sm text-gray-600 mb-2 sm:mb-3">Improved Position After VIPI Programme</div>
+                    <div className="relative h-6 bg-gradient-to-r from-red-200 via-yellow-200 via-green-200 to-blue-200 rounded-full">
+                      <div
+                        className="absolute top-0 w-4 sm:w-6 h-4 sm:h-6 bg-green-600 rounded-full border-2 border-white shadow-lg transform -translate-x-2 sm:-translate-x-3 transition-all duration-700 flex items-center justify-center"
+                        style={{
+                          left: `${getMultiplePosition((parseFloat(ebitda) * 3) / 1000, sectorMultiples[sector as keyof typeof sectorMultiples])}%`
+                        }}
+                      >
+                        <div className="w-1 sm:w-2 h-1 sm:h-2 bg-white rounded-full"></div>
+                      </div>
+                    </div>
+                    <div className="flex justify-between text-xs text-gray-500 mt-1 px-1">
+                      <span>Micro<br/>{sectorMultiples[sector as keyof typeof sectorMultiples]?.micro.toFixed(1)}x</span>
+                      <span>Small<br/>{sectorMultiples[sector as keyof typeof sectorMultiples]?.small.toFixed(1)}x</span>
+                      <span>Growing<br/>{sectorMultiples[sector as keyof typeof sectorMultiples]?.baseline.toFixed(1)}x</span>
+                      <span>Upper Mid<br/>{sectorMultiples[sector as keyof typeof sectorMultiples]?.upperMid.toFixed(1)}x</span>
+                    </div>
+                    <div className="text-center mt-2 text-xs sm:text-sm text-gray-600">
+                      Improved Position: <span className="font-semibold text-green-800">{improvedBusinessSize}</span>
+                      ({improvedMultiple.toFixed(1)}x multiple)
+                    </div>
                   </div>
-                  <div className="text-center mt-2 text-xs sm:text-sm text-gray-600">
-                    Improved Position: <span className="font-semibold text-green-800">{improvedBusinessSize}</span>
-                    ({improvedMultiple.toFixed(1)}x multiple)
-                  </div>
-                </div>
+                )}
                 
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-4 sm:mb-6">
                   <div className="text-center p-3 sm:p-4 bg-white rounded-xl shadow-sm">
@@ -929,7 +910,7 @@ const ValuationCalculator: React.FC<ValuationCalculatorProps> = ({ isOpen, onClo
 
 
           {/* Guidance for incomplete form */}
-          {((!useCustomMultiples && !sector) || !ebitda || isNaN(parseFloat(ebitda)) || parseFloat(ebitda) <= 0) && (
+          {((!useCustomMultiples && !sector) || (useCustomMultiples && (!customCurrentMultiple || !customImprovedMultiple)) || !ebitda || isNaN(parseFloat(ebitda)) || parseFloat(ebitda) <= 0) && (
             <div className="bg-purple-50 p-4 sm:p-6 rounded-xl border border-purple-200">
               <h3 className="text-base sm:text-lg font-semibold text-purple-800 mb-2 sm:mb-3">Get Started</h3>
               <div className="space-y-1 sm:space-y-2 text-xs sm:text-sm text-purple-700">
@@ -937,6 +918,18 @@ const ValuationCalculator: React.FC<ValuationCalculatorProps> = ({ isOpen, onClo
                   <p className="flex items-center">
                     <span className="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-purple-600 rounded-full mr-2 sm:mr-3 flex-shrink-0"></span>
                     Please select your business sector above
+                  </p>
+                )}
+                {useCustomMultiples && !customCurrentMultiple && (
+                  <p className="flex items-center">
+                    <span className="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-purple-600 rounded-full mr-2 sm:mr-3 flex-shrink-0"></span>
+                    Please enter your current EBITDA multiple
+                  </p>
+                )}
+                {useCustomMultiples && !customImprovedMultiple && (
+                  <p className="flex items-center">
+                    <span className="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-purple-600 rounded-full mr-2 sm:mr-3 flex-shrink-0"></span>
+                    Please enter your improved EBITDA multiple
                   </p>
                 )}
                 {(!ebitda || isNaN(parseFloat(ebitda)) || parseFloat(ebitda) <= 0) && (
