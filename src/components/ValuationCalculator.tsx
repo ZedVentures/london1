@@ -619,8 +619,8 @@ const ValuationCalculator: React.FC<ValuationCalculatorProps> = ({ isOpen, onClo
                     <Zap className="w-5 sm:w-6 h-5 sm:h-6 text-green-600 mr-2" />
                     <h3 className="text-lg sm:text-xl font-bold text-gray-800">Potential with Purple Guard Advisory</h3>
                   </div>
-                  <span className="sm:ml-2 px-2 py-1 bg-green-100 text-green-800 text-xs font-semibold rounded-full self-start sm:self-auto">Average 3x EBITDA Growth</span>
-                  <Tooltip content="This shows your potential business valuation after our VIPI programme achieves 3x EBITDA growth. Notice how the higher EBITDA not only increases earnings but also moves you into a higher multiple category, creating compound value growth.">
+                  <span className="sm:ml-2 px-2 py-1 bg-green-100 text-green-800 text-xs font-semibold rounded-full self-start sm:self-auto">Based on Growth Experience</span>
+                  <Tooltip content="This shows your potential business valuation based on growth previously experienced by clients through our VIPI programme. Notice how the higher EBITDA not only increases earnings but also moves you into a higher multiple category, creating compound value growth.">
                     <HelpCircle className="w-3 sm:w-4 h-3 sm:h-4 text-gray-400 hover:text-purple-600 cursor-help ml-2" />
                   </Tooltip>
                 </div>
@@ -630,9 +630,9 @@ const ValuationCalculator: React.FC<ValuationCalculatorProps> = ({ isOpen, onClo
                   <div className="flex items-start space-x-2 sm:space-x-3">
                     <Info className="w-4 sm:w-5 h-4 sm:h-5 text-blue-600 flex-shrink-0 mt-0.5" />
                     <div>
-                      <h4 className="text-sm sm:text-base font-bold text-blue-800 mb-1 sm:mb-2">Based on Real Client Results</h4>
+                      <h4 className="text-sm sm:text-base font-bold text-blue-800 mb-1 sm:mb-2">Based on Growth Experience</h4>
                       <p className="text-blue-700 text-xs sm:text-sm leading-relaxed">
-                        The 3x EBITDA growth projection is based on the <strong>average increase</strong> that the VIPI programme has delivered to our long-term clients. Individual results may vary depending on business circumstances, market conditions, and implementation commitment.
+                        This growth projection is based on <strong>growth previously experienced</strong> by clients through the VIPI programme. Individual results may vary depending on business circumstances, market conditions, and implementation commitment.
                       </p>
                     </div>
                   </div>
@@ -776,7 +776,7 @@ const ValuationCalculator: React.FC<ValuationCalculatorProps> = ({ isOpen, onClo
                 <div className="mt-3 sm:mt-4 p-3 sm:p-4 bg-blue-50 rounded-xl">
                   <h4 className="text-sm sm:text-base font-semibold text-blue-800 mb-2">How we achieve this:</h4>
                   <ul className="text-blue-700 text-xs sm:text-sm space-y-1">
-                    <li>• <strong>Average 3x EBITDA Growth:</strong> Based on long-term client results through our proven VIPI framework</li>
+                    <li>• <strong>EBITDA Growth:</strong> Based on growth previously experienced by clients through our proven VIPI framework</li>
                     <li>• <strong>Size Premium:</strong> Larger businesses command higher multiples</li>
                     <li>• <strong>Sector Optimization:</strong> Industry-specific value enhancement strategies</li>
                     <li>• <strong>Exit Readiness:</strong> Positioning for maximum acquirer appeal</li>
