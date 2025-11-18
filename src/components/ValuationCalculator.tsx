@@ -719,14 +719,14 @@ const ValuationCalculator: React.FC<ValuationCalculatorProps> = ({ isOpen, onClo
                     <div>
                       <h4 className="text-sm sm:text-base font-semibold text-green-800 mb-1">Total Value Creation</h4>
                       <p className="text-xs sm:text-sm text-green-700">
-                        EBITDA Growth + Size Premium = Maximum Value
+                        EBITDA Growth + Size Premium = New Value
                       </p>
                     </div>
                     <div className="text-left sm:text-right">
                       <div className="text-xl sm:text-2xl font-bold text-green-600">
-                        {formatCurrency((improvedValuation - valuation) * 1000)}
+                        {formatCurrency(improvedValuation * 1000)}
                       </div>
-                      <div className="text-xs sm:text-sm text-green-700">Additional Value</div>
+                      <div className="text-xs sm:text-sm text-green-700">New Business Value</div>
                     </div>
                   </div>
                 </div>
@@ -794,29 +794,6 @@ const ValuationCalculator: React.FC<ValuationCalculatorProps> = ({ isOpen, onClo
             </>
           )}
 
-          {/* Comprehensive Disclaimer */}
-          <div className="mt-6 sm:mt-8 p-4 sm:p-6 bg-blue-50 rounded-xl border border-blue-200">
-            <h4 className="text-base sm:text-lg font-semibold text-blue-800 mb-3 sm:mb-4">Important Disclaimer</h4>
-            <p className="text-blue-700 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4">
-              Business valuation is a complex process that is unique to every business. The calculations shown above are estimates based on industry averages and standard multiples.
-            </p>
-            <p className="text-blue-700 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4">
-              These numbers may not reflect current realizable valuations as they do not account for:
-            </p>
-            <ul className="text-blue-700 text-xs sm:text-sm space-y-1 sm:space-y-2 mb-4 sm:mb-6 ml-3 sm:ml-4">
-              <li>• Market conditions and timing</li>
-              <li>• Business-specific factors and risks</li>
-              <li>• Asset quality and customer concentration</li>
-              <li>• Management team and operational efficiency</li>
-              <li>• Growth prospects and competitive position</li>
-            </ul>
-            <div className="bg-white p-3 sm:p-4 rounded-lg border border-blue-200">
-              <h5 className="text-sm sm:text-base font-semibold text-blue-800 mb-2">Ready for a more accurate valuation?</h5>
-              <p className="text-blue-700 text-xs sm:text-sm leading-relaxed">
-                The first stage of our VIPI programme will provide you with a comprehensive analysis and a more accurate understanding of your business current market valuation.
-              </p>
-            </div>
-          </div>
 
           {/* Guidance for incomplete form */}
           {(!sector || !ebitda || isNaN(parseFloat(ebitda)) || parseFloat(ebitda) <= 0) && (
