@@ -482,7 +482,7 @@ function App() {
                     <h3 className="text-2xl font-bold text-white mb-3">Any Sector, UK-Based</h3>
                     <p className="text-purple-100 leading-relaxed">
                       Whether you're in technology, manufacturing, retail, professional services, or any other sector,
-                      our VIPI framework adapts to your industry. We work with UK businesses of all types who are
+                      VIPI framework adapts to your industry. We work with UK businesses of all types who are
                       serious about growth.
                     </p>
                   </div>

@@ -335,7 +335,7 @@ const ValuationCalculator: React.FC<ValuationCalculatorProps> = ({ isOpen, onClo
                       These estimates do not constitute professional financial advice or a formal valuation. For accurate business valuations, professional assessment is required.
                     </p>
                     <p>
-                      Results from our VIPI programme vary by business and are subject to market conditions, business circumstances, and implementation commitment. Past performance does not guarantee future results.
+                      Results from VIPI programme vary by business and are subject to market conditions, business circumstances, and implementation commitment. Past performance does not guarantee future results.
                     </p>
                   </div>
                 </div>
@@ -704,7 +704,7 @@ const ValuationCalculator: React.FC<ValuationCalculatorProps> = ({ isOpen, onClo
                     <h3 className="text-lg sm:text-xl font-bold text-gray-800">Potential with Purple Guard Advisory</h3>
                   </div>
                   <span className="sm:ml-2 px-2 py-1 bg-green-100 text-green-800 text-xs font-semibold rounded-full self-start sm:self-auto">Based on Growth Experience</span>
-                  <Tooltip content="This shows your potential business valuation based on growth previously experienced by clients through our VIPI programme. Notice how the higher EBITDA not only increases earnings but also moves you into a higher multiple category, creating compound value growth.">
+                  <Tooltip content="This shows your potential business valuation based on growth previously experienced by clients through VIPI programme. Notice how the higher EBITDA not only increases earnings but also moves you into a higher multiple category, creating compound value growth.">
                     <HelpCircle className="w-3 sm:w-4 h-3 sm:h-4 text-gray-400 hover:text-purple-600 cursor-help ml-2" />
                   </Tooltip>
                 </div>
@@ -946,7 +946,7 @@ const ValuationCalculator: React.FC<ValuationCalculatorProps> = ({ isOpen, onClo
           <div className="text-center pt-6 sm:pt-8 border-t border-gray-200">
             <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2 sm:mb-3 px-2">Want to Unlock This Potential?</h3>
             <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 px-4">
-              Our VIPI programme includes comprehensive business valuations and strategies to maximize your exit value.
+              VIPI programme includes comprehensive business valuations and strategies to maximize your exit value.
             </p>
             <button
               onClick={() => {
