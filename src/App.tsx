@@ -321,7 +321,7 @@ function App() {
             console.error('Video failed to load');
           }}
         >
-          <source src="https://xfxgavqdippgfoawsavh.supabase.co/storage/v1/object/public/Video%20BAckground/Untitled%20design%20(1).mp4" type="video/mp4" />
+          <source src="/videos/Untitled design.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
 
