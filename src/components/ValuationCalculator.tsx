@@ -126,6 +126,7 @@ const getConfidenceInterval = (ebitdaValue: number, multiple: number, sector: st
 };
 
 const ValuationCalculator: React.FC<ValuationCalculatorProps> = ({ isOpen, onClose }) => {
+  const [disclaimerAccepted, setDisclaimerAccepted] = useState(false);
   const [sector, setSector] = useState('');
   const [ebitda, setEbitda] = useState('');
   const [assets, setAssets] = useState('');
@@ -254,11 +255,11 @@ const ValuationCalculator: React.FC<ValuationCalculatorProps> = ({ isOpen, onClo
   if (!isOpen) return null;
 
   return (
-    <div 
+    <div
       className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4"
       onClick={onClose}
     >
-      <div 
+      <div
         className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl max-w-4xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
@@ -281,7 +282,73 @@ const ValuationCalculator: React.FC<ValuationCalculatorProps> = ({ isOpen, onClo
           </div>
         </div>
 
-        {/* Content */}
+        {/* Disclaimer Modal */}
+        {!disclaimerAccepted && (
+          <div className="p-4 sm:p-6 lg:p-8">
+            <div className="bg-red-50 border-2 border-red-200 rounded-2xl p-6 sm:p-8">
+              <div className="flex items-start space-x-4 mb-6">
+                <div className="flex-shrink-0">
+                  <Info className="w-8 h-8 text-red-600" />
+                </div>
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-red-800 mb-4">Important Disclaimer</h3>
+                  <div className="text-red-700 text-sm sm:text-base leading-relaxed space-y-4">
+                    <p className="font-semibold">
+                      This valuation calculator provides estimates only and does not guarantee results.
+                    </p>
+                    <p>
+                      The calculations shown are based on industry averages and standard multiples. Actual business valuations are complex and depend on numerous factors including:
+                    </p>
+                    <ul className="list-disc ml-5 space-y-2">
+                      <li>Current market conditions and economic climate</li>
+                      <li>Business-specific factors, risks, and opportunities</li>
+                      <li>Quality and diversity of revenue streams</li>
+                      <li>Management team strength and operational systems</li>
+                      <li>Competitive position and growth prospects</li>
+                      <li>Customer concentration and retention rates</li>
+                      <li>Asset quality and financial health</li>
+                    </ul>
+                    <p className="font-semibold">
+                      These estimates do not constitute professional financial advice or a formal valuation. For accurate business valuations, professional assessment is required.
+                    </p>
+                    <p>
+                      Results from our VIPI programme vary by business and are subject to market conditions, business circumstances, and implementation commitment. Past performance does not guarantee future results.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white p-4 sm:p-6 rounded-xl border border-red-200 mb-6">
+                <label className="flex items-start space-x-3 cursor-pointer group">
+                  <input
+                    type="checkbox"
+                    checked={disclaimerAccepted}
+                    onChange={(e) => setDisclaimerAccepted(e.target.checked)}
+                    className="mt-1 w-5 h-5 text-purple-600 border-2 border-gray-300 rounded focus:ring-2 focus:ring-purple-500 cursor-pointer"
+                  />
+                  <span className="text-gray-800 text-sm sm:text-base leading-relaxed group-hover:text-gray-900">
+                    I understand that this calculator provides estimates only and does not guarantee results. I acknowledge that actual business valuations require professional assessment and that results may vary.
+                  </span>
+                </label>
+              </div>
+
+              <button
+                onClick={() => setDisclaimerAccepted(true)}
+                disabled={!disclaimerAccepted}
+                className={`w-full py-4 rounded-xl font-semibold text-lg transition-all duration-300 ${
+                  disclaimerAccepted
+                    ? 'bg-purple-800 hover:bg-purple-900 text-white hover:scale-105 cursor-pointer'
+                    : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                }`}
+              >
+                Continue to Calculator
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Calculator Content - Only show after disclaimer accepted */}
+        {disclaimerAccepted && (
         <div className="p-4 sm:p-6 lg:p-8 space-y-6 sm:space-y-8">
           {/* Sector Selection */}
           <div>
@@ -789,6 +856,7 @@ const ValuationCalculator: React.FC<ValuationCalculatorProps> = ({ isOpen, onClo
             </button>
           </div>
         </div>
+        )}
       </div>
     </div>
   );
