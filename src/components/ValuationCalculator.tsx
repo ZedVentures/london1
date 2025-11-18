@@ -127,7 +127,7 @@ const getConfidenceInterval = (ebitdaValue: number, multiple: number, sector: st
 
 const ValuationCalculator: React.FC<ValuationCalculatorProps> = ({ isOpen, onClose }) => {
   const [disclaimerAccepted, setDisclaimerAccepted] = useState(false);
-  const [useCustomMultiples, setUseCustomMultiples] = useState(false);
+  const [useCustomMultiples, setUseCustomMultiples] = useState(true);
   const [sector, setSector] = useState('');
   const [ebitda, setEbitda] = useState('');
   const [assets, setAssets] = useState('');
