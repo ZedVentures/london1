@@ -107,10 +107,6 @@ const BusinessResults: React.FC = () => {
     threshold: 0.1,
     rootMargin: '-100px'
   }, true);
-  useIntersectionObserver({
-    threshold: 0.3,
-    rootMargin: '-50px'
-  }, true);
 
   useEffect(() => {
     if (isSectionVisible && autoScrollEnabled) {
@@ -165,7 +161,7 @@ const BusinessResults: React.FC = () => {
                     business={business}
                     isCurrentSlide={index === currentSlide}
                     isSectionVisible={isSectionVisible}
-                    isChartVisible={isChartVisible}
+                    isChartVisible={isSectionVisible}
                   />
                 </div>
               ))}
