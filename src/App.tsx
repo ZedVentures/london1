@@ -15,6 +15,10 @@ function App() {
     threshold: 0.3,
     rootMargin: '-50px'
   }, true);
+  const [allicaBankRef, isAllicaBankVisible] = useIntersectionObserver({
+    threshold: 0.3,
+    rootMargin: '-50px'
+  }, true);
   const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
   const [metricsRef, metricsVisible] = useScrollAnimation({ threshold: 0.2 });
   const [vipiRef, vipiVisible] = useScrollAnimation({ threshold: 0.1 });
@@ -752,6 +756,45 @@ function App() {
               {/* Call to Action */}
               <div className="text-center">
                 <button className="bg-gradient-to-r from-purple-800 to-purple-600 hover:from-purple-900 hover:to-purple-700 text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl group-hover:shadow-purple-500/50">
+                  Learn More
+                </button>
+              </div>
+            </a>
+
+            {/* Allica Bank Card */}
+            <a
+              ref={allicaBankRef}
+              href="https://www.allica.bank/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`block bg-white/95 backdrop-blur-md p-6 sm:p-8 rounded-3xl shadow-2xl border border-white/30 hover:shadow-2xl hover:bg-white hover:border-indigo-200 transition-all duration-1000 hover:scale-105 cursor-pointer group ${
+                isAllicaBankVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+              }`}
+              style={{ transitionDelay: '200ms' }}
+            >
+              {/* Logo */}
+              <div className="text-center mb-8">
+                <img
+                  src="https://images2.imgbox.com/16/56/Lz9MsKLf_o.png"
+                  alt="Allica Bank Logo"
+                  className="w-50 h-auto mx-auto object-contain"
+                />
+              </div>
+
+              {/* Company Name */}
+
+              <h3 className="text-2xl font-bold text-gray-900 text-center mb-6">
+                Allica Bank
+              </h3>
+
+              {/* Description */}
+              <p className="text-gray-600 text-center leading-relaxed mb-8">
+                The UK's fastest-growing bank, specialising in SMEs with deep understanding of challenges facing established businesses.
+              </p>
+
+              {/* Call to Action */}
+              <div className="text-center">
+                <button className="bg-gradient-to-r from-indigo-800 to-indigo-600 hover:from-indigo-900 hover:to-indigo-700 text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl group-hover:shadow-indigo-500/50">
                   Learn More
                 </button>
               </div>
