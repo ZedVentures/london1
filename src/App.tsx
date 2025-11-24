@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Shield, TrendingUp, Users, Award, CheckCircle, ArrowRight, Calculator, Phone, Mail, MapPin, Clock, Star, ChevronDown, ChevronUp, Play, Pause, ChevronLeft, ChevronRight, Plus, Minus, Target, Eye, Zap, Lightbulb, BarChart3, Building, User, AlertTriangle, Send, ExternalLink, Building2, PieChart, LineChart, DollarSign } from 'lucide-react';
+import { Menu, X, TrendingUp, Users, CheckCircle, ArrowRight, Target, Eye, Zap, Lightbulb, BarChart3, Building } from 'lucide-react';
 import ContactForm from './components/ContactForm';
 import BusinessResults from './components/BusinessResults';
 import ValuationCalculator from './components/ValuationCalculator';
@@ -16,46 +16,9 @@ function App() {
     rootMargin: '-50px'
   }, true);
   const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const totalSlides = 3;
-
   const [metricsRef, metricsVisible] = useScrollAnimation({ threshold: 0.2 });
-  const [servicesRef, servicesVisible] = useScrollAnimation({ threshold: 0.15 });
   const [vipiRef, vipiVisible] = useScrollAnimation({ threshold: 0.1 });
-  const [caseStudiesRef, caseStudiesVisible] = useScrollAnimation({ threshold: 0.1 });
-  const [testimonialsRef, testimonialsVisible] = useScrollAnimation({ threshold: 0.2 });
   const [partnershipsRef, partnershipsVisible] = useScrollAnimation({ threshold: 0.2 });
-  const [faqRef, faqVisible] = useScrollAnimation({ threshold: 0.2 });
-  const [ctaRef, ctaVisible] = useScrollAnimation({ threshold: 0.3 });
-
-  // Auto-advance slides
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % totalSlides);
-    }, 5000); // Change slide every 5 seconds
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % totalSlides);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
-  };
-  const [formData, setFormData] = useState({
-    name: '',
-    position: '',
-    businessName: '',
-    email: '',
-    phone: '',
-    employees: '',
-    turnover: '',
-    stressFactors: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitMessage, setSubmitMessage] = useState('');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -72,34 +35,6 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitMessage('Thank you for your submission! We\'ll be in touch within 24 hours.');
-      setFormData({
-        name: '',
-        position: '',
-        businessName: '',
-        email: '',
-        phone: '',
-        employees: '',
-        turnover: '',
-        stressFactors: ''
-      });
-    }, 2000);
-  };
 
   const metrics = [
     {
@@ -162,53 +97,6 @@ function App() {
       deliverables: ["New Product/Service Development", "Market Expansion Strategy", "Workforce Scaling Plan"],
       icon: <Lightbulb className="w-12 h-12" />,
       color: "from-indigo-800 to-purple-900"
-    }
-  ];
-
-  const partnerships = [
-    {
-      name: "MooreMentum",
-      description: "Market-leading business growth advisers with an accredited, proven VIPI system for owner-managed businesses.",
-      url: "https://mooreks.co.uk/"
-    },
-  ];
-  const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
-
-  const caseStudies = [
-    {
-      company: "Eden Facades",
-      metric: "Net Assets Growth",
-      before: "£291K",
-      after: "£2.54M",
-      growth: "+773%",
-      period: "2019–2024",
-      quote: "The VIPI Growth Programme is extremely progressive and transformative. The profit growth results are outstanding. We would highly recommend it to every entrepreneurial owner-manager.",
-      author: "Tony Hill, Managing Director",
-      chartData: [291, 338, 832, 419, 1420, 2540]
-    },
-    {
-      company: "Pump Street Chocolate",
-      metric: "Net Assets Growth",
-      before: "£19K",
-      after: "£926K",
-      growth: "+4,774%",
-      period: "2019–2024",
-      quote: "The process helped us implement changes on time and in full, reducing day-to-day stress while focusing on strategic growth. Our monthly meetings are thought-provoking, constructive and beneficial. We really feel the MooreMentum team know our business well – they are the best we have worked with in the advisory world.",
-      author: "Chris Brennan, Director",
-      chartData: [19, 3, 275, 1280, 1100, 926]
-    },
-    {
-      company: "London Vision Clinic Partners",
-      metric: "EBIT Growth & Exit",
-      before: "£94K",
-      after: "£2.19M",
-      growth: "+2,230%",
-      exitValue: "£30.9M",
-      period: "2020–2021",
-      quote: "The unique IPI processes, which promote aligned goals and give the management team a clear view of our own business, helped guide us to achieve an exit event value materially beyond anything achievable at the start of the process. We would thoroughly recommend the IPI Growth Programme and the MooreMentum team.",
-      author: "Craig Engelfried, Managing Director",
-      chartData: [94, 2190],
-      hasNasdaqLink: true
     }
   ];
 
@@ -308,7 +196,7 @@ function App() {
               console.log('Video autoplay blocked');
             });
           }}
-          onError={(e) => {
+          onError={() => {
             console.error('Video failed to load');
           }}
         >

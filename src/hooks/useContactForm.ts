@@ -163,7 +163,7 @@ ${formData.additionalInfo || 'No additional information provided'}`,
         throw new Error(`EmailJS returned status ${response.status}: ${response.text}`);
       }
       
-    } catch (error: any) {
+    } catch {
       setSubmitStatus('error');
       setStatusMessage('Unable to send message at this time. Please contact us directly at zedwork112@gmail.com or try again later.');
     } finally {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Calculator, TrendingUp, Building2, DollarSign, Target, Zap, HelpCircle, Info, BarChart3, ArrowUp, ArrowDown } from 'lucide-react';
+import { X, Calculator, TrendingUp, Building2, DollarSign, Target, Zap, HelpCircle, Info } from 'lucide-react';
 
 interface ValuationCalculatorProps {
   isOpen: boolean;
@@ -52,79 +52,6 @@ const sectorMultiples = {
   'Business Services (non-tech)': { micro: 3.5, small: 4.7, baseline: 5.9, upperMid: 7.7 }
 };
 
-// Enhanced business size categories with detailed thresholds
-const businessSizeCategories = [
-  { 
-    name: 'Micro Business', 
-    range: '£0-200K', 
-    ebitdaMin: 0, 
-    ebitdaMax: 200, 
-    color: 'bg-red-400',
-    textColor: 'text-red-700',
-    bgColor: 'bg-red-50',
-    description: 'Early stage, high risk, limited systems'
-  },
-  { 
-    name: 'Small Business', 
-    range: '£200K-1M', 
-    ebitdaMin: 200, 
-    ebitdaMax: 1000, 
-    color: 'bg-orange-400',
-    textColor: 'text-orange-700',
-    bgColor: 'bg-orange-50',
-    description: 'Established operations, growing systems'
-  },
-  { 
-    name: 'Growing Business', 
-    range: '£1M-5M', 
-    ebitdaMin: 1000, 
-    ebitdaMax: 5000, 
-    color: 'bg-yellow-400',
-    textColor: 'text-yellow-700',
-    bgColor: 'bg-yellow-50',
-    description: 'Proven model, scalable operations'
-  },
-  { 
-    name: 'Mid-Market', 
-    range: '£5M-10M', 
-    ebitdaMin: 5000, 
-    ebitdaMax: 10000, 
-    color: 'bg-green-400',
-    textColor: 'text-green-700',
-    bgColor: 'bg-green-50',
-    description: 'Mature business, strong market position'
-  },
-  { 
-    name: 'Upper Mid-Market', 
-    range: '£10M+', 
-    ebitdaMin: 10000, 
-    ebitdaMax: Infinity, 
-    color: 'bg-blue-400',
-    textColor: 'text-blue-700',
-    bgColor: 'bg-blue-50',
-    description: 'Market leader, premium valuations'
-  }
-];
-
-// Confidence intervals based on business size and sector
-const getConfidenceInterval = (ebitdaValue: number, multiple: number, sector: string) => {
-  let confidenceRange = 0.15; // Base 15% range
-  
-  // Adjust confidence based on business size (smaller = less confident)
-  if (ebitdaValue <= 0.2) confidenceRange = 0.25;
-  else if (ebitdaValue <= 1) confidenceRange = 0.20;
-  else if (ebitdaValue >= 10) confidenceRange = 0.10;
-  
-  // Adjust for sector volatility
-  const volatileSectors = ['E-commerce / Web Retail', 'Media & Communications', 'Hospitality & Tourism'];
-  if (volatileSectors.includes(sector)) confidenceRange += 0.05;
-  
-  return {
-    low: multiple * (1 - confidenceRange),
-    high: multiple * (1 + confidenceRange)
-  };
-};
-
 const ValuationCalculator: React.FC<ValuationCalculatorProps> = ({ isOpen, onClose }) => {
   const [disclaimerAccepted, setDisclaimerAccepted] = useState(false);
   const [useCustomMultiples, setUseCustomMultiples] = useState(true);
@@ -141,7 +68,7 @@ const ValuationCalculator: React.FC<ValuationCalculatorProps> = ({ isOpen, onClo
   const [improvedMultiple, setImprovedMultiple] = useState(0);
   const [improvedBusinessSize, setImprovedBusinessSize] = useState('');
 
-  const calculateMultiple = (ebitdaValue: number, multiples: any) => {
+  const calculateMultiple = (ebitdaValue: number, multiples: { micro: number; small: number; growing: number; midMarket: number; upperMidMarket: number }) => {
     let calculatedMultiple = 0;
     let businessSize = '';
 
@@ -233,7 +160,7 @@ const ValuationCalculator: React.FC<ValuationCalculatorProps> = ({ isOpen, onClo
     }
   };
 
-  const getMultiplePosition = (ebitdaValue: number, multiples: any) => {
+  const getMultiplePosition = (ebitdaValue: number) => {
     // ebitdaValue should already be in millions when passed to this function
     const ebitdaInMillions = ebitdaValue;
     
@@ -252,27 +179,6 @@ const ValuationCalculator: React.FC<ValuationCalculatorProps> = ({ isOpen, onClo
     } else { // £10M+ (Upper Mid-Market)
       return Math.min(75 + (25 * Math.min((ebitdaInMillions - 10) / 40, 1)), 100);
     }
-  };
-
-  const getCurrentBusinessCategory = (ebitdaValue: number) => {
-    const ebitdaInThousands = ebitdaValue * 1000;
-    return businessSizeCategories.find(cat => 
-      ebitdaInThousands >= cat.ebitdaMin && ebitdaInThousands < cat.ebitdaMax
-    ) || businessSizeCategories[0];
-  };
-
-  const getValuationRange = (ebitdaValue: number, sector: string) => {
-    if (!sector) return { low: 0, mid: 0, high: 0 };
-    
-    const multiples = sectorMultiples[sector as keyof typeof sectorMultiples];
-    const current = calculateMultiple(ebitdaValue, multiples);
-    const confidence = getConfidenceInterval(ebitdaValue, current.multiple, sector);
-    
-    return {
-      low: ebitdaValue * confidence.low,
-      mid: ebitdaValue * current.multiple,
-      high: ebitdaValue * confidence.high
-    };
   };
 
   if (!isOpen) return null;
